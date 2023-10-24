@@ -11,7 +11,7 @@ export function Home() {
     </Container>
   );
 }
-//prueba
+//test2
 const Container = styled.div`
   height: 100vh;
 `;

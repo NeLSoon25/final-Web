@@ -187,6 +187,7 @@ const Main = styled.div`
     color: ${(props) => props.theme.text};
   }
 `;
+// this container displays a line to give style to the UI
 const Divider = styled.div`
   height: 1px;
   width: 100%;

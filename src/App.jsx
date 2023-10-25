@@ -14,6 +14,7 @@ import { styled } from "styled-components";
 export const ThemeContext = createContext(null);
 function App() {
   const [theme, setTheme] = useState("dark");
+  // set the current theme based on user's selection
   const themeStyle = theme === "light" ? Light : Dark;
   const [sidebarOpen, setSidebarOpen] = useState(false);
 

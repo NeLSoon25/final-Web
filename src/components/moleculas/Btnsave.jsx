@@ -3,7 +3,7 @@ import {Icono} from "../../index"
 export function Btnsave({ funcion, titulo, bgcolor, icono }) {
   return (
     <Container type="submit" bgcolor={bgcolor}>
-     <Icono>{icono}</Icono>
+      <Icono>{icono}</Icono>
       <span className="btn" onClick={funcion}>
         {titulo}
       </span>

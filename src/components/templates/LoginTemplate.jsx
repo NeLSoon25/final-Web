@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Btnsave, v,useAuthStore } from "../../index";
+import { Btnsave, v, useAuthStore } from "../../index";
 export function LoginTemplate() {
   const {signInWithGoogle} = useAuthStore();
   return (

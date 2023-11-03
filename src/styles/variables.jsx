@@ -79,5 +79,6 @@ export const v = {
   iconocheck: BsCalendarCheck,
   imagenfondo: fondo,
   colorSecundario: `#DAC1FF`,
-  iconoflechaderecha:IoIosArrowForward
+  iconoflechaderecha:IoIosArrowForward,
+  colorselector:"#BF94FF",
 };

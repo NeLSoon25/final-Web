@@ -16,8 +16,9 @@ export function ConfiguracionTemplate() {
   //tema
   const iconobd=datausuarios.tema ==="0"?"☀️":"🌑";
   const temadb=datausuarios.tema ==="0"?"light":"dark";
-  const temainicial=selectTema.tema?selectTema.tema:temadb;
-  const iconoinicial = selectTema.icono?selectTema.icono: iconobd;
+  //const temainicial=selectTema.tema?selectTema.tema:temadb;
+  const temainicial = selectTema.descripcion ? selectTema.descripcion : temadb;
+  const iconoinicial = selectTema.icono ? selectTema.icono: iconobd;
   const temaSeleccionado = iconoinicial + " " + temainicial;
   //funcion editar
   const editar = async ()=>{

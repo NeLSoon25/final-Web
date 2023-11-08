@@ -5,7 +5,10 @@ import {
   Light,
   Dark,
   AuthContextProvider,
-  Menuambur,useUsuariosStore
+  Menuambur,
+  useUsuariosStore,
+  Login,
+  SpinnerLoader
 } from "./index";
 import {useLocation} from "react-router-dom"
 import { createContext, useState } from "react";
@@ -24,7 +27,7 @@ function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const {isLoading,error} = useQuery({querykey:["mostrar usuarios"],queryFn:()=>mostrarUsuarios()});
   if(isLoading){
-    return <h1>Cargando...</h1>
+    return <SpinnerLoader/>;
   }
   if(error){
     return <h1>Errorr..</h1>

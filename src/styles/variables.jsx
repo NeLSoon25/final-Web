@@ -24,6 +24,8 @@ import { AiOutlineCalculator } from "react-icons/ai";
 import { BsCalendarCheck } from "react-icons/bs";
 import {IoIosArrowForward} from "react-icons/io"
 import fondo from "../assets/fondo1.svg";
+import {GrFormPrevious,GrCaretNext} from "react-icons/gr"
+import {MdOutlineBorderAll} from "react-icons/md"
 export const v = {
   sidebarWidth: `300px`,
   sidebarWidthInitial: `10vw`,
@@ -50,9 +52,7 @@ export const v = {
   bpmarge: `62em`,
   bphomer: `75em`,
   colorPrincipal: `#00F34A`,
-  boxshadowGray: `box-shadow: -2px 14px 20px -4px rgba(0,0,0,0.4);
-    -webkit-box-shadow: -2px 14px 20px -4px rgba(0,0,0,0.4);
-    -moz-box-shadow: -2px 14px 20px -4px rgba(0,0,0,0.4);`,
+  boxshadowGray: `0px 10px 15px -3px rgba(0,0,0,0.1)`,
   iconoFlechabajo: IoIosArrowDown,
   iconocorona: RiVipCrownFill,
   iconoUser: BiUserCircle,
@@ -81,4 +81,8 @@ export const v = {
   colorSecundario: `#DAC1FF`,
   iconoflechaderecha:IoIosArrowForward,
   colorselector:"#BF94FF",
+  rgbafondos:"rgba(210, 110, 249, 0.1)",
+  iconoprev:GrFormPrevious,
+  icononext:GrCaretNext,
+  iconotodos:MdOutlineBorderAll
 };

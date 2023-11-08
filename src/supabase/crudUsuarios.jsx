@@ -15,10 +15,11 @@ export const MostrarUsuarios = async () => {
         const { error, data } = await supabase
         .from('usuarios')
         .select()
-        .eq("idauth_supabase", idAuthSupabase);
+        .eq("idauth_supabase", idAuthSupabase)
+        .maybeSingle();
         
         if(data){
-            return data[0];
+            return data;
         }
     } catch (error) {
        // alert(error.error_description || error.message + "Mostrar usuarios");

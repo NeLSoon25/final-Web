@@ -1,16 +1,23 @@
 import { create } from "zustand";
-import { v } from "../index";
+import { v } from "../styles/variables";
 export const useOperaciones = create((set, get) => ({
-
-  tipo:"i",
-  
+  tipo: "i",
   tituloBtnDes: "Categorias ingresos",
-  colorCategoria: ()=> v.colorIngresos,
-  bgCategoria: ()=> v.colorbgingresos,
+  tituloBtnDesMovimientos: "Ingresos",
+  colorCategoria:  v.colorIngresos,
+  bgCategoria:  v.colorbgingresos,
+  año: null,
+  mes: null,
+  setMes: (p) => {
+    set({ mes: p });
+  },
+  setAño: (p) => {
+    set({ año: p });
+  },
   setTipo: (p) => {
     set({tipo:p.tipo})
     set({
-      tituloBtnDes: p.text,
+      tituloBtnDes: p.text,tituloBtnDesMovimientos:p.text
     });
     set({
       colorCategoria: p.color,

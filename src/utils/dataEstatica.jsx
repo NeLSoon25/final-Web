@@ -11,17 +11,17 @@ import {TbPig} from "react-icons/tb"
 export const DesplegableUser = [
   {
     text: "Mi perfil",
-    icono: v.iconoUser,
+    icono: <v.iconoUser/>,
     tipo: "miperfil",
   },
   {
     text: "Configuracion",
-    icono: v.iconoSettings,
+    icono: <v.iconoSettings/>,
     tipo: "configuracion",
   },
   {
     text: "Cerrar sesión",
-    icono: v.iconoCerrarSesion,
+    icono: <v.iconoCerrarSesion/>,
     tipo: "cerrarsesion",
   },
 ];
@@ -29,18 +29,31 @@ export const DesplegableUser = [
 export const DataDesplegableTipo = [
   {
     text: "Categorias gastos",
-    color: v.colorGastos,
+    color:  v.colorGastos,
     tipo: "g",
-    bgcolor: v.colorbgGastos,
+    bgcolor:  v.colorbgGastos,
   },
   {
     text: "Categorias ingresos",
     color: v.colorIngresos,
     tipo: "i",
-    bgcolor: v.colorbgingresos,
+    bgcolor:  v.colorbgingresos,
   },
 ];
-
+export const DataDesplegableMovimientos = [
+  {
+    text: "Gastos",
+    color:  v.colorGastos,
+    tipo: "g",
+    bgcolor:  v.colorbgGastos,
+  },
+  {
+    text: "Ingresos",
+    color: v.colorIngresos,
+    tipo: "i",
+    bgcolor:  v.colorbgingresos,
+  },
+];
 
 //data SIDEBAR
 export const LinksArray = [

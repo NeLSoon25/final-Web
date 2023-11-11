@@ -3,23 +3,26 @@ import {
   ContentAccionesTabla,
   useCategoriasStore,
   Paginacion,
+  useMovimientosStore,
 } from "../../../index";
 import Swal from "sweetalert2";
 import { v } from "../../../styles/variables";
 import { useState } from "react";
-export function TablaCategorias({
+export function TablaMovimientos({
   data,
   SetopenRegistro,
   setdataSelect,
   setAccion,
 }) {
- if(data.length==0) return;
+  if (data == null) {
+    return;
+  }
   const [pagina, setPagina] = useState(1);
   const [porPagina, setPorPagina] = useState(10);
   const mx = data.length / porPagina;
   const maximo = mx < 1 ? 1 : mx;
 
-  const { eliminarCategoria } = useCategoriasStore();
+  const { eliminarMovimiento } = useMovimientosStore();
   function eliminar(p) {
     Swal.fire({
       title: "¿Estás seguro(a)(e)?",
@@ -31,7 +34,7 @@ export function TablaCategorias({
       confirmButtonText: "Si, eliminar",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        await eliminarCategoria({ id: p.id, idusuario: p.idusuario });
+        await eliminarMovimiento({ id: p.id });
       }
     });
   }
@@ -46,41 +49,40 @@ export function TablaCategorias({
         <table className="responsive-table">
           <thead>
             <tr>
+              <th scope="col">Situacion</th>
+              <th scope="col">Fecha</th>
               <th scope="col">Descripcion</th>
-              <th scope="col">Icono</th>
-              <th scope="col">Color</th>
-              <th scope="col">Acciones</th>
+              <th scope="col">Categoria</th>
+              <th scope="col">Cuenta</th>
+              <th scope="col">Valor</th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
-            {data
-              .slice(
-                (pagina - 1) * porPagina,
-                (pagina - 1) * porPagina + porPagina
-              )
-              .map((item, index) => {
-                return (
-                  <tr key={item.id}>
-                    <th scope="row">{item.descripcion}</th>
-                    <td data-title="Icono">{item.icono}</td>
-                    <td data-title="Color" className="Colordiv">
-                      <div className="ColorContent">
-                        <Colorcontent
-                          color={item.color}
-                          $alto="25px"
-                          $ancho="25px"
-                        />
-                      </div>
-                    </td>
-                    <td data-title="Acciones">
-                      <ContentAccionesTabla
-                        funcionEditar={() => editar(item)}
-                        funcionEliminar={() => eliminar(item)}
-                      />
-                    </td>
-                  </tr>
-                );
-              })}
+            {data.map((item, index) => {
+              return (
+                <tr key={item.id}>
+                  <th scope="row">
+                    <Situacion
+                      bgcolor={item.estado == "1" ? "#69e673" : "#b3b3b3"}
+                    ></Situacion>
+                  </th>
+                  <td  data-title="Fecha" >{item.fecha}</td>
+                  <td data-title="Descripcion" >
+                    {item.descripcion}
+                  </td>
+                  <td data-title="Categoria" >{item.categoria}</td>
+                  <td data-title="Cuenta">{item.cuenta}</td>
+                  <td data-title="Monto">{item.valorymoneda}</td>
+                  <td data-title="Acciones" >
+                    <ContentAccionesTabla
+                      funcionEditar={() => editar(item)}
+                      funcionEliminar={() => eliminar(item)}
+                    />
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
         <Paginacion pagina={pagina} setPagina={setPagina} maximo={maximo} />
@@ -211,6 +213,10 @@ const Container = styled.div`
           border-bottom: 1px solid rgba(161, 161, 161, 0.32);
           text-align: center;
         }
+        
+      }
+      td[data-type="currency"] {
+        font-weight:600;
       }
       td[data-title]:before {
         content: attr(data-title);
@@ -234,4 +240,15 @@ const Colorcontent = styled.div`
   background-color: ${(props) => props.color};
   border-radius: 50%;
   text-align: center;
+`;
+const Situacion = styled.div`
+  display: flex;
+  justify-content: center;
+  &::before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: ${(props) => props.bgcolor};
+  }
 `;

@@ -9,16 +9,19 @@ import {
   Btnfiltro,
   v,
   TablaCategorias,
-  RegistrarCategorias
+  RegistrarCategorias,
+  Lottieanimacion,
 } from "../../index";
 import { useState } from "react";
+import vacioverde from "../../assets/vacioverde.json";
+import vaciorojo from "../../assets/vaciorojo.json";
 export function CategoriasTemplate({ data }) {
   const [openRegistro, SetopenRegistro] = useState(false);
   const [accion, setAccion] = useState("");
   const [dataSelect, setdataSelect] = useState([]);
   const [state, setState] = useState(false);
   const [stateTipo, setStateTipo] = useState(false);
-  const { colorCategoria, tituloBtnDes, bgCategoria, setTipo } =
+  const { colorCategoria, tituloBtnDes, bgCategoria, setTipo,tipo } =
     useOperaciones();
   function cambiarTipo(p) {
     setTipo(p);
@@ -38,14 +41,20 @@ export function CategoriasTemplate({ data }) {
     setState(!state);
     setStateTipo(false);
   }
-  function nuevoRegistro(){
+  function nuevoRegistro() {
     SetopenRegistro(!openRegistro);
-    setAccion("Nuevo")
-    setdataSelect([])
+    setAccion("Nuevo");
+    setdataSelect([]);
   }
   return (
     <Container onClick={cerrarDesplegables}>
-      {openRegistro && <RegistrarCategorias dataSelect={dataSelect} onClose={()=>SetopenRegistro(!openRegistro)} accion={accion}/>}
+      {openRegistro && (
+        <RegistrarCategorias
+          dataSelect={dataSelect}
+          onClose={() => SetopenRegistro(!openRegistro)}
+          accion={accion}
+        />
+      )}
 
       <header className="header">
         <Header stateConfig={{ state: state, setState: openUser }} />
@@ -77,7 +86,7 @@ export function CategoriasTemplate({ data }) {
       <section className="area2">
         <ContentFiltro>
           <Btnfiltro
-          funcion={nuevoRegistro}
+            funcion={nuevoRegistro}
             bgcolor={bgCategoria}
             textcolor={colorCategoria}
             icono={<v.agregar />}
@@ -85,7 +94,20 @@ export function CategoriasTemplate({ data }) {
         </ContentFiltro>
       </section>
       <section className="main">
-        <TablaCategorias data={data} SetopenRegistro={SetopenRegistro} setdataSelect={setdataSelect} setAccion={setAccion}/>
+        {data.length == 0 && (
+          <Lottieanimacion
+            alto="300"
+            ancho="300"
+            animacion={tipo == "i" ? vacioverde : vaciorojo}
+          />
+        )}
+
+        <TablaCategorias
+          data={data}
+          SetopenRegistro={SetopenRegistro}
+          setdataSelect={setdataSelect}
+          setAccion={setAccion}
+        />
       </section>
     </Container>
   );

@@ -10,8 +10,10 @@ import {
 export function DataUser({ stateConfig }) {
   const { user } = UserAuth();
   const { signout } = useAuthStore();
-  const funcionXtipo = async (tipo) => {
-    if (tipo === "cerrarsesion") {
+  const funcionXtipo = async (p) => {
+   
+    if (p.tipo === "cerrarsesion") {
+     
       await signout();
     }
   };
@@ -25,11 +27,11 @@ export function DataUser({ stateConfig }) {
         icono={<v.iconocorona />}
         width="25px"
         height="25px"
-        bgcolor="#ffffff"
-        textColor="#181616"
+        bgcolor={`linear-gradient(15deg, rgba(255, 88, 58, 0.86) 9%, #f8bf5b 100%);`}
+        textcolor="#ffffff"
         fontsize="11px"
-        translateX="-50px"
-        translateY="-12px"
+        translatex="-50px"
+        translatey="-12px"
       />
       <span className="nombre">{user.name}</span>
       {stateConfig.state && (

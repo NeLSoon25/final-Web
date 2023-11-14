@@ -22,7 +22,7 @@ export function ConfiguracionTemplate() {
   //pais moneda
   const moneda = select.symbol ? select.symbol : datausuarios.moneda;
   const pais = select.countryName ? select.countryName : datausuarios.pais;
-  const paisSeleccionado = "🐷 " + moneda + " " + pais;
+  const paisSeleccionado = moneda + " " + pais;
   //tema
   const iconobd = datausuarios.tema === "0" ? "🌞" : "🌚";
   const temabd = datausuarios.tema === "0" ? "light" : "dark";

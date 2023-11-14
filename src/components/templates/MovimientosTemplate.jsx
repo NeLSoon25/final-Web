@@ -30,7 +30,7 @@ export function MovimientosTemplate() {
   const [state, setState] = useState(false);
   const [stateTipo, setStateTipo] = useState(false);
   const {
-    setTipo,
+    setTipoMovimientos,
     tipo,
     colorCategoria,
     año,
@@ -54,7 +54,7 @@ export function MovimientosTemplate() {
     setState(false);
   }
   function cambiarTipo(p) {
-    setTipo(p);
+    setTipoMovimientos(p);
     setStateTipo(!stateTipo);
     setState(false);
   }
@@ -63,23 +63,23 @@ export function MovimientosTemplate() {
     setAccion("Nuevo");
     setdataSelect([]);
   }
-  useQuery(
+  useQuery({queryKey:
     [
       "mostrar movimientos mes año",
       { año: año, mes: mes, idusuario: idusuario, tipocategoria: tipo },
-    ],
+    ],queryFn:
     () =>
       mostrarMovimientos({
         año: año,
         mes: mes,
         idusuario: idusuario,
         tipocategoria: tipo,
-      })
-  );
-  useQuery(["mostrar cuentas"], () => mostrarCuentas({ idusuario: idusuario }));
-  useQuery(["mostrar categorias", { idusuario: idusuario, tipo: tipo }], () =>
-    mostrarCategorias({ idusuario: idusuario, tipo: tipo })
-  );
+      }),refetchOnWindowFocus:false,
+    });
+    useQuery({queryKey:["mostrar cuentas"],queryFn: () => mostrarCuentas({ idusuario: idusuario })});
+    useQuery({queryKey:["mostrar categorias", { idusuario: idusuario, tipo: tipo }],queryFn: () =>
+      mostrarCategorias({ idusuario: idusuario, tipo: tipo })}
+    );
 
   return (
     <Container>

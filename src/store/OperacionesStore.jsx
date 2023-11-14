@@ -14,6 +14,18 @@ export const useOperaciones = create((set, get) => ({
   setAño: (p) => {
     set({ año: p });
   },
+  setTipoMovimientos:(p) => {
+    set({tipo:p.tipo})
+    set({
+      tituloBtnDesMovimientos:p.text
+    });
+    set({
+      colorCategoria: p.color,
+    });
+    set({
+      bgCategoria: p.bgcolor,
+    });
+  },
   setTipo: (p) => {
     set({tipo:p.tipo})
     set({

@@ -28,7 +28,7 @@ export function CardEliminarData() {
     <Container>
       <h2>Resetear todo</h2>
       <span>
-        🐽ADVERTENCIA!: *esta acción es irreversible, una vez ejecutada se
+        ADVERTENCIA!: *esta acción es irreversible, una vez ejecutada se
         eliminaran todos tus registros de movimientos incluso las categorias
         registradas. <br />
         *Se reseteara tambien los saldos acumulados en tus cuentas.

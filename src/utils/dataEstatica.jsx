@@ -92,7 +92,7 @@ export const SecondarylinksArray = [
   {
     label: "Acerca de",
     icon: <TbPig />,
-    to: "/acercade",
+    to: "/",
   },
 ];
 //temas

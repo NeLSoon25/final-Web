@@ -25,8 +25,8 @@ export function ConfiguracionTemplate() {
   const paisSeleccionado = moneda + " " + pais;
   //tema
   const iconobd = datausuarios.tema === "0" ? "🌞" : "🌚";
-  const temabd = datausuarios.tema === "0" ? "light" : "dark";
-  const temainicial = selectTema.tema ? selectTema.tema : temabd;
+  const temadb = datausuarios.tema === "0" ? "light" : "dark";
+  const temainicial = selectTema.descripcion ? selectTema.descripcion : temadb;
   const iconoinicial = selectTema.icono ? selectTema.icono : iconobd;
   const temaSeleccionado = iconoinicial + " " + temainicial;
   //funcion editar

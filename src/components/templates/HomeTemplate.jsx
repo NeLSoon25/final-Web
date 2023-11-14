@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Carousel,Btnsave,v } from "../../index";
+import imglogo from "../../assets/Anahuac1.png"
 
 export function HomeTemplate() {
   return (<Main>
@@ -11,11 +12,11 @@ export function HomeTemplate() {
       <SubText>Nuestro proyecto se encargara de gestionar tus ingresosy gastos de la mejor manera<br /></SubText>
       <ContainerAutor>
         <div className="contentImg">
-          <img src="https://i.ibb.co/6Nw0B9p/yjtityutyu.png" />
+          <img src={imglogo} />
         </div>
         <div className="contentDescripcion">
           <b>Proyecto Final Web</b>
-          <span>"cualquiera puede programar"</span>
+          <span>Luis, Pedro, Nelson, Jorge</span>
         </div>
       </ContainerAutor>
       <ButtonContainer>

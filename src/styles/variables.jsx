@@ -10,7 +10,7 @@ import { FcPicture } from "react-icons/fc";
 import { CgMathPlus } from "react-icons/cg";
 import { TbBrandSupabase } from "react-icons/tb";
 import { FaReact } from "react-icons/fa";
-import { BsArrowDown, BsArrowUpShort } from "react-icons/bs";
+import { BsArrowDown, BsArrowUp } from "react-icons/bs";
 import { FaBalanceScale } from "react-icons/fa";
 import logo from "../assets/Anahuac1.png";
 import { BsGoogle } from "react-icons/bs";
@@ -65,7 +65,7 @@ export const v = {
   iconosupabase: TbBrandSupabase,
   iconoreact: FaReact,
   flechaabajolarga: BsArrowDown,
-  flechaarribalarga: BsArrowUpShort,
+  flechaarribalarga: BsArrowUp,
   balance: FaBalanceScale,
   logo: logo,
   iconogoogle: BsGoogle,

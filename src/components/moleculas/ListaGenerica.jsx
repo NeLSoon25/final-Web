@@ -28,7 +28,7 @@ const Container = styled.div`
   color: ${({ theme }) => theme.text};
   position: absolute;
   margin-bottom: 15px;
-  bottom: 88%;
+  bottom: 35%;
   width: 100%;
   padding: 10px;
   border-radius: 10px;

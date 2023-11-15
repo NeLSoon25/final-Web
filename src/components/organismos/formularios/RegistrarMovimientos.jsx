@@ -74,7 +74,7 @@ export function RegistrarMovimientos({ setState, state, dataSelect, accion }) {
             <h1>Nuevo {tipo == "i" ? "ingreso" : "gasto"}</h1>
           </div>
           <div>
-            <span onClick={close}>{<v.iconocerrar />}</span>
+            <span onClick={setState}>{<v.iconocerrar />}</span>
           </div>
         </div>
 

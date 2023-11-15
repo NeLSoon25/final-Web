@@ -3,6 +3,14 @@ import { Carousel,Btnsave,v } from "../../index";
 import imglogo from "../../assets/Anahuac1.png"
 
 export function HomeTemplate() {
+  function instagram() {
+    window.location.href = "https://www.instagram.com/";
+  }
+
+  function schoolPage() {
+    window.location.href = "https://www.anahuac.mx/oaxaca/alumnado";
+  }
+
   return (<Main>
     <Container>
       <Box>
@@ -20,16 +28,17 @@ export function HomeTemplate() {
         </div>
       </ContainerAutor>
       <ButtonContainer>
-          <Btnsave url="https://www.instagram.com/"
+          <Btnsave funcion={instagram}
             titulo="Instagram"
             bgcolor="#BF94FF"
             icono={<v.iconoreact />}
           />
-          <Btnsave url="https://www.anahuac.mx/oaxaca/alumnado"
+          <Btnsave funcion={schoolPage}
             titulo="Informacion"
             bgcolor="#fb37b7"
             icono={<v.iconocorona />}
           />
+          
         </ButtonContainer>
     </Container>
   </Main>);

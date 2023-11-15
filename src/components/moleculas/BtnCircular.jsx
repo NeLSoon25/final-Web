@@ -25,15 +25,15 @@ export function BtnCircular({
 }
 const Container = styled.div`
   background-color: ${(props) => props.bgcolor};
-  min-width: ${(props) => props.width};
-  min-height: ${(props) => props.height};
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  transform: translatex(${(props) => props.translateX})
-    translateY(${(props) => props.translateY});
+  position: relative;
+  top: ${(props) => props.translateY};
+  left: ${(props) => props.translateX};
 
   span {
     font-size: ${(props) => props.fontsize};

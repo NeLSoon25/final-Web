@@ -1,3 +1,7 @@
+# Testings
+src/tests/results/group-tests/**/*.png
+src/tests/results/unit-tests/**
+
 # Logs
 logs
 *.log

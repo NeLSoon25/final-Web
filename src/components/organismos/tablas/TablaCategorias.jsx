@@ -13,14 +13,26 @@ export function TablaCategorias({
   setdataSelect,
   setAccion,
 }) {
- if(data.length==0) return;
+  // it can't be a table if there is no data to display
+  if(data.length == 0) return;
+  // stores current page selected by user
   const [pagina, setPagina] = useState(1);
+  // stores max elements to display per page
   const [porPagina, setPorPagina] = useState(10);
-  const mx = data.length / porPagina;
-  const maximo = mx < 1 ? 1 : mx;
+  // calculate total pages
+  //! there is an error to pagination logic here
+  // const mx = data.length / porPagina;
+  // const maximo = mx < 1 ? 1 : mx;
+  const maximo = Math.floor((data.length + 9) / porPagina);
 
+  // delete api function
   const { eliminarCategoria } = useCategoriasStore();
+  /**
+   * displays a Swal panel that performs a delete query if yes is answered
+   * @param {Object} p    category object to eliminate from database
+   */
   function eliminar(p) {
+    // display alert panel
     Swal.fire({
       title: "¿Estás seguro(a)(e)?",
       text: "Una vez eliminado, ¡no podrá recuperar este registro!",
@@ -31,13 +43,21 @@ export function TablaCategorias({
       confirmButtonText: "Si, eliminar",
     }).then(async (result) => {
       if (result.isConfirmed) {
+        // call delete query if yes is pressed
         await eliminarCategoria({ id: p.id, idusuario: p.idusuario });
       }
     });
   }
+  /**
+   * set variables to open update window
+   * @param {Object} data 
+   */
   function editar(data) {
+    // show update window
     SetopenRegistro(true);
+    // set old data
     setdataSelect(data);
+    // set action to edit
     setAccion("Editar");
   }
   return (
@@ -83,10 +103,11 @@ export function TablaCategorias({
               })}
           </tbody>
         </table>
-        <Paginacion pagina={pagina} setPagina={setPagina} maximo={maximo} />
+        {maximo !== 0 && <Paginacion pagina={pagina} setPagina={setPagina} maximo={maximo} />}
       </Container>
     </>
   );
+  //! add bool to show pagination if there are pages
 }
 const Container = styled.div`
   position: relative;

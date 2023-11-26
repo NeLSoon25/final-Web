@@ -4,6 +4,7 @@ import { useState } from "react";
 import { LinksArray, SecondarylinksArray } from "../../index";
 import { NavLink } from "react-router-dom";
 export function Menuambur() {
+  // bool variable used to show/hide menu
   const [click, setClick] = useState(false);
   return (
   <Container>
@@ -27,7 +28,7 @@ export function Menuambur() {
               </div>
             ))}
             <Divider/>
-           {SecondarylinksArray.map(({ icon, label, to }) => (
+            {SecondarylinksArray.map(({ icon, label, to }) => (
             <div
               key={label}
               className="LinkContainer"

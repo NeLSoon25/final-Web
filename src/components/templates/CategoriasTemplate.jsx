@@ -16,31 +16,58 @@ import { useState } from "react";
 import vacioverde from "../../assets/vacioverde.json";
 import vaciorojo from "../../assets/vaciorojo.json";
 export function CategoriasTemplate({ data }) {
+  // bool variable to show/hide create category window
   const [openRegistro, SetopenRegistro] = useState(false);
+  // variable used to determine user's action (insert or update)
   const [accion, setAccion] = useState("");
+  // stores last category selected by the user
   const [dataSelect, setdataSelect] = useState([]);
+  // bool variable to show/hide user options
   const [state, setState] = useState(false);
+  // bool variable to show/hide type category options (income, outcome)
   const [stateTipo, setStateTipo] = useState(false);
-  const { colorCategoria, tituloBtnDes, bgCategoria, setTipo,tipo } =
-    useOperaciones();
+  // style values and setters
+  const { colorCategoria, tituloBtnDes, bgCategoria, setTipo, tipo } = useOperaciones();
+  /**
+   * sets a new type and updates values
+   * @param {String} p    Type selected
+   */
   function cambiarTipo(p) {
+    // set new type
     setTipo(p);
+    // hide type select option
     setStateTipo(!stateTipo);
+    // hide user 
     setState(false);
   }
-
+  /**
+   * hides all select options on the screen
+   */
   function cerrarDesplegables() {
     setStateTipo(false);
     setState(false);
   }
+  /**
+   * shows/hides category type options
+   */
   function openTipo() {
+    // switch category type bool variable
     setStateTipo(!stateTipo);
+    // hide user options
     setState(false);
   }
+  /**
+   * shows/hides user options
+   */
   function openUser() {
+    // switch user options bool variable
     setState(!state);
+    // hide category type
     setStateTipo(false);
   }
+  /**
+   * shows new category window
+   */
   function nuevoRegistro() {
     SetopenRegistro(!openRegistro);
     setAccion("Nuevo");

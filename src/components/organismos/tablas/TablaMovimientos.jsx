@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {
   ContentAccionesTabla,
-  useCategoriasStore,
+  useCategoriasStore, //! unused import
   Paginacion,
   useMovimientosStore,
 } from "../../../index";
@@ -14,16 +14,28 @@ export function TablaMovimientos({
   setdataSelect,
   setAccion,
 }) {
+  // you cannot create a table if there is no data.
   if (data == null) {
     return;
   }
+  // current user page
   const [pagina, setPagina] = useState(1);
+  // max elements per page
   const [porPagina, setPorPagina] = useState(10);
-  const mx = data.length / porPagina;
-  const maximo = mx < 1 ? 1 : mx;
+  // calculate maximum pages
+  //! there is an error to pagination logic here
+  // const mx = data.length / porPagina;
+  // const maximo = mx < 1 ? 1 : mx;
+  const maximo = Math.floor((data.length + 9) / porPagina);
 
+  // api delete function
   const { eliminarMovimiento } = useMovimientosStore();
+  /**
+   * opens a Swal panel and performs a delete query if yes is pressed
+   * @param {Object} p    movement object to delete from the database
+   */
   function eliminar(p) {
+    // open Swal panel
     Swal.fire({
       title: "¿Estás seguro(a)(e)?",
       text: "Una vez eliminado, ¡no podrá recuperar este registro!",
@@ -34,15 +46,24 @@ export function TablaMovimientos({
       confirmButtonText: "Si, eliminar",
     }).then(async (result) => {
       if (result.isConfirmed) {
+        // delete object from database if yes is selected
         await eliminarMovimiento({ id: p.id });
       }
     });
   }
+  /**
+   * set values to open edit movement panel
+   * @param {Object} data 
+   */
   function editar(data) {
+    // open panel
     SetopenRegistro(true);
+    // set data to update
     setdataSelect(data);
+    // set action to edit
     setAccion("Editar");
   }
+  //! data.slice was not implemented and pagination was failing
   return (
     <>
       <Container>
@@ -59,7 +80,12 @@ export function TablaMovimientos({
             </tr>
           </thead>
           <tbody>
-            {data.map((item, index) => {
+            {data
+              .slice(
+                (pagina - 1) * porPagina,
+                (pagina - 1) * porPagina + porPagina
+              )
+              .map((item, index) => {
               return (
                 <tr key={item.id}>
                   <th scope="row">
@@ -85,10 +111,12 @@ export function TablaMovimientos({
             })}
           </tbody>
         </table>
-        <Paginacion pagina={pagina} setPagina={setPagina} maximo={maximo} />
+        { maximo !== 0 && <Paginacion pagina={pagina} setPagina={setPagina} maximo={maximo} /> }
       </Container>
     </>
   );
+  //? why do we have an edit button if there is no update option on CRUD
+  //! add bool to show pagination if there are pages
 }
 const Container = styled.div`
   position: relative;

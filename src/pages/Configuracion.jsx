@@ -8,5 +8,5 @@ export function Configuracion() {
   );
 }
 const Container = styled.main`
- height: 100vh;
+  height: 100vh;
 `;

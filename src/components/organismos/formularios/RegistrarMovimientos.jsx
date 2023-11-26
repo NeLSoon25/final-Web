@@ -12,32 +12,43 @@ import {
   InputText,
   useCuentaStore,
   v,
-  Btnsave,useUsuariosStore
+  Btnsave,
+  useUsuariosStore //! unused import
 } from "../../../index";
-import { useEffect } from "react";
-export function RegistrarMovimientos({ setState, state, dataSelect, accion }) {
+import { useEffect } from "react"; //! unused import
+export function RegistrarMovimientos({ setState, state, dataSelect, accion }) { //! unused variables
+  // user current account data
   const { cuentaItemSelect } = useCuentaStore();
-  const { datacategoria, categoriaItemSelect, selectCategoria } =
-    useCategoriasStore();
+  // category data and item setter
+  const { datacategoria, categoriaItemSelect, selectCategoria } = useCategoriasStore();
+  // category type
   const { tipo } = useOperaciones();
+  // API insert request function
   const { insertarMovimientos } = useMovimientosStore();
- 
-  const [estado, setEstado] = useState(true);
-  const [ignorar, setIgnorar] = useState(false);
-  const [stateCategorias, setStateCategorias] = useState(false);
 
+  // bool variable to determine if movements have been paid or not
+  const [estado, setEstado] = useState(true);
+  //! unused variable
+  const [ignorar, setIgnorar] = useState(false);
+  // bool variable to hide/show type select options (income or outcome)
+  const [stateCategorias, setStateCategorias] = useState(false);
+  // forms library
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
-
+  /**
+   * calls create function to instert data into the database
+   * @param {Object} data   inputted form data
+   */
   const insertar = async (data) => {
+    // set movement status variable (paid or unpaid)
     let estadoText = 0;
     if (estado) {
       estadoText = 1;
     }
-
+    // object to insert on the database
     const p = {
       tipo: tipo,
       estado: estadoText,
@@ -47,8 +58,7 @@ export function RegistrarMovimientos({ setState, state, dataSelect, accion }) {
       valor: parseFloat(data.monto),
       idcategoria: categoriaItemSelect.id,
     };
-
-
+    // call insert function
     try {
       await insertarMovimientos(p);
       setState();
@@ -56,10 +66,13 @@ export function RegistrarMovimientos({ setState, state, dataSelect, accion }) {
       alert(err);
     }
   };
+  /**
+   * updates paid/unpaid option selected by user through a switch (checkbox)
+   * @param {Event} e    event triggered when switch element is pressed
+   */
   function estadoControl(e) {
     setEstado(e.target.checked);
   }
-
 
   return (
     <Container onClick={setState}>
@@ -134,7 +147,7 @@ export function RegistrarMovimientos({ setState, state, dataSelect, accion }) {
           </section>
           {stateCategorias && (
             <ListaGenerica
-              bottom="23%"
+              bottom="88%"
               scroll="scroll"
               setState={() => setStateCategorias(!stateCategorias)}
               data={datacategoria}

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Icono, Colorcontent } from "../../index";
-export function ItemsDesplegable({ item,funcion,color }) {
+export function ItemsDesplegable({ item, funcion, color }) { //! unused import
   return (
     <Container onClick={funcion}>
       <Icono>{item.icono}</Icono>

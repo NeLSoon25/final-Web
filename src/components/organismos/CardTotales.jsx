@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { v, useUsuariosStore, BtnCircular } from "../../index";
 export function CardTotales({ color, total, title, icono }) {
+  // user data
   const { datausuarios } = useUsuariosStore();
   return (
     <Container>
@@ -23,7 +24,6 @@ export function CardTotales({ color, total, title, icono }) {
           textcolor="#ffffff"
           translatex="-45px"
           translatey="-15px"
-         
         />
       </div>
     </Container>

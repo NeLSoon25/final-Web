@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { HashLoader } from "react-spinners";
 import { useOperaciones } from "../../index";
 export function SpinnerLoader() {
-  const { colorCategoria } = useOperaciones();
+  const { colorCategoria } = useOperaciones(); //! unused import
+  //? maybe it was supposed to be implemented here
   return (
     <Container>
       <HashLoader color="#7f3ceb" size={200}/>
@@ -21,6 +22,4 @@ const Container = styled.div`
   z-index: 1000;
   background-color: rgb(31, 31, 31);
   transform: all 0.3s;
-
-
 `;

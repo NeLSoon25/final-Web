@@ -1,42 +1,54 @@
 import styled from "styled-components";
-import { v, InputBuscadorLista, ConvertirCapitalize, Device,BtnCerrar } from "../../index";
+import { v, InputBuscadorLista, ConvertirCapitalize, Device, BtnCerrar } from "../../index";
 import iso from "iso-country-currency"
 import { useState } from "react";
 export function ListaPaises({ setSelect, setState }) {
-    const isocodigos = iso.getAllISOCodes();
-    const [dataresult, setDataresult] = useState([]);
-    function seleccionar(p) {
-        setSelect(p)
-        setState();
-    }
-    function buscar(e) {
-        let filtrado = isocodigos.filter((item) => {
-            return item.countryName == ConvertirCapitalize(e.target.value)
-        });
-        setDataresult(filtrado);
-    }
-    return (
-        <Container>
-            <header className="header">
-                <span>busca tu pais</span>
-                <BtnCerrar funcion={setState}/>
-            </header>
-            <InputBuscadorLista
-                onChange={buscar}
-                placeholder="Buscar..." />
-            {
-                dataresult.length > 0 &&
-                dataresult.map((item, index) => {
-                    return (
-                        <ItemContainer key={index} onClick={() => seleccionar(item)}>
-                            <span>{item.countryName}</span>
-                            <span>{item.symbol}</span>
-                        </ItemContainer>
-                    );
-                })
-            }
-        </Container>
-    );
+  // currency library
+  const isocodigos = iso.getAllISOCodes();
+  // currency selected by user
+  const [dataresult, setDataresult] = useState([]);
+  /**
+   * sets the selected currency by the user
+   * @param {Object} p    currency object selected by the user
+   */
+  function seleccionar(p) {
+    setSelect(p)
+    setState();
+  }
+  /**
+   * searchs for a currency that belongs to certain countryname
+   * @param {Event} e    event with text inputed by the user
+   */
+  function buscar(e) {
+    // filters currencies looging for a match with a country name
+    let filtrado = isocodigos.filter((item) => {
+      return item.countryName == ConvertirCapitalize(e.target.value)
+    });
+    // sets results
+    setDataresult(filtrado);
+  }
+  return (
+    <Container>
+      <header className="header">
+        <span>busca tu pais</span>
+        <BtnCerrar funcion={setState}/>
+      </header>
+      <InputBuscadorLista
+        onChange={buscar}
+        placeholder="Buscar..." />
+      {
+        dataresult.length > 0 &&
+        dataresult.map((item, index) => {
+          return (
+            <ItemContainer key={index} onClick={() => seleccionar(item)}>
+              <span>{item.countryName}</span>
+              <span>{item.symbol}</span>
+            </ItemContainer>
+          );
+        })
+      }
+    </Container>
+  );
 }
 const Container = styled.div`
   margin-top: 10px;

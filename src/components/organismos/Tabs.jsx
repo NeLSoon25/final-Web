@@ -2,20 +2,29 @@ import { useState } from "react";
 import styled from "styled-components";
 import {
   v,
-  Dona,Lineal,Barras,
+  Dona, Lineal, Barras,
   useMovimientosStore,
   useOperaciones,
   useUsuariosStore
 } from "../../index";
 import { useQuery } from "@tanstack/react-query";
 export function Tabs() {
+  // variable used to switch between different graphs selected by the user
   const [activeTab, setactiveTab] = useState(0);
+  /**
+   * sets the selected tab by the user
+   * @param {Int} index    tab index to display
+   */
   const handleClick = (index) => {
     setactiveTab(index);
   };
+  // user data
   const {idusuario} = useUsuariosStore();
-  const {año,mes,tipo, tituloBtnDesMovimientos} = useOperaciones();
-  const {dataRptMovimientosAñoMes,rptMovimientosAñoMes} = useMovimientosStore();
+  // button title, date and type data
+  const {año, mes, tipo, tituloBtnDesMovimientos} = useOperaciones();
+  // movements data and function to fetch data
+  const {dataRptMovimientosAñoMes, rptMovimientosAñoMes} = useMovimientosStore();
+  // supported graph colors and styles
   const datagrafica = {
     type: "line",
     labels: dataRptMovimientosAñoMes?.map((item) => item.descripcion),
@@ -49,22 +58,27 @@ export function Tabs() {
       },
     ],
   };
-  const {isLoading,error} = useQuery({queryKey:["reporte movimientos",{
-    año: año,
-    mes: mes,
-    tipocategoria: tipo,
-    idusuario: idusuario,
-  }],queryFn: () =>
-    rptMovimientosAñoMes({
+  // perform a query to get page data before rendering
+  const {isLoading, error} = useQuery({
+    queryKey:["reporte movimientos", {
       año: año,
       mes: mes,
       tipocategoria: tipo,
       idusuario: idusuario,
+    }],
+    queryFn: () =>
+      rptMovimientosAñoMes({
+        año: año,
+        mes: mes,
+        tipocategoria: tipo,
+        idusuario: idusuario,
     })
-});
+  });
+  // display a message if component is loading
   if (isLoading) {
     return <h1>cargando</h1>;
   }
+  // display a error if component failed to load
   if (error) {
     return <h1>Error</h1>;
   }

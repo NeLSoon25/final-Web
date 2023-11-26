@@ -10,7 +10,7 @@ export function ContentAccionesTabla({funcionEditar, funcionEliminar}) {
   );
 }
 const Container = styled.div`
- display: flex;
+  display: flex;
   flex-wrap: wrap;
   justify-content:center;
   gap:10px;

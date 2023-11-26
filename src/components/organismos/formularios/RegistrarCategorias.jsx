@@ -14,29 +14,49 @@ import { CirclePicker } from "react-color";
 import Emojipicker from "emoji-picker-react";
 
 export function RegistrarCategorias({ onClose, dataSelect, accion }) {
+  // CRUD functions
   const { insertarCategorias, editarCategoria } = useCategoriasStore();
+  // user data
   const { datausuarios } = useUsuariosStore();
+  // boolean to show or not emoji palette
   const [showPicker, setShowPicker] = useState(false);
+  // emoji selected by user
   const [emojiselect, setEmojiselect] = useState("😻");
+  // color selected by user
   const [currentColor, setColor] = useState("#F44336");
-
+  // boolean to show spinner (loading icon) when performing API request.
   const [estadoProceso, setEstadoproceso] = useState(false);
+  // enum attribute for current selected movement type (used on database)
   const { tipo } = useOperaciones();
+  /**
+   * sets emogi selected by user and closes emoji window
+   * @param {Object} emojiObject 
+   */
   function onEmojiClick(emojiObject) {
     setEmojiselect(() => emojiObject.emoji);
     setShowPicker(false);
   }
+  /**
+   * sets color selected by user
+   * @param {Object} color 
+   */
   function elegirColor(color) {
     setColor(color.hex);
   }
-
+  // forms library
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
+  /**
+   * calls Create or Update functions to modify the database
+   * @param {Object} data   category object to update or insert into the database
+   */
   async function insertar(data) {
+    // if edit window was open, UPDATE is performed
     if (accion === "Editar") {
+      // category object
       const p = {
         descripcion: data.descripcion,
         color: currentColor,
@@ -46,12 +66,18 @@ export function RegistrarCategorias({ onClose, dataSelect, accion }) {
         tipo: tipo,
       };
       try {
+        // show loading spinner
         setEstadoproceso(true);
+        // perform update
         await editarCategoria(p);
+        // hide loading spinner
         setEstadoproceso(false);
+        // hide this component
         onClose();
       } catch (error) {}
+    // if create window was open, INSERT is performed
     } else {
+      // category object
       const p = {
         descripcion: data.descripcion,
         color: currentColor,
@@ -60,16 +86,20 @@ export function RegistrarCategorias({ onClose, dataSelect, accion }) {
         tipo: tipo,
       };
       try {
+        // show loading spinner
         setEstadoproceso(true);
+        // perform insert
         await insertarCategorias(p);
+        // hide loading spinner
         setEstadoproceso(false);
-
+        // hide this component
         onClose();
       } catch (error) {
         alert("error ingresar Form");
       }
     }
   }
+  // reset form to default values when opens
   useEffect(() => {
     if (accion === "Editar") {
       setEmojiselect(dataSelect.icono);

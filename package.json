@@ -7,7 +7,15 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test_node": "jest --config=jest-node.config.cjs",
+    "test_jsdom": "jest --config=jest-jsdom.config.cjs",
+    "test_puppeteer_categories": "node ./src/tests/group-test/categories.test.js",
+    "test_puppeteer_movements": "node ./src/tests/group-test/movements.test.js",
+    "test_puppeteer_summaries": "node ./src/tests/group-test/summaries.test.js",
+    "test_puppeteer_configuration": "node ./src/tests/group-test/configuration.test.js",
+    "test_puppeteer": "npm run test_puppeteer_categories && npm run test_puppeteer_movements && npm run test_puppeteer_summaries && npm run test_puppeteer_configuration",
+    "test": "npm run test_node && npm run test_jsdom && npm run test_puppeteer"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -30,11 +38,12 @@
     "react-router-dom": "^6.15.0",
     "react-spinners": "^0.13.8",
     "styled-components": "^6.0.7",
-    "sweetalert2": "^11.9.0",
+    "sweetalert2": "^11.6.13",
     "swiper": "^11.0.4",
     "zustand": "^4.4.4"
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.22.15",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react": "^4.0.3",
@@ -42,6 +51,15 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
+    "fs": "^0.0.1-security",
+    "fs-extra": "^11.1.1",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "jest-html-reporters": "^3.1.4",
+    "path": "^0.12.7",
+    "puppeteer": "^21.5.2",
+    "puppeteer-core": "^21.5.1",
+    "react-test-renderer": "^18.2.0",
     "vite": "^4.4.5"
   }
 }

@@ -21,8 +21,9 @@ function App() {
   const{mostrarUsuarios,datausuarios} = useUsuariosStore();
 
   const { pathname } = useLocation();
-  //const [theme, setTheme] = useState("dark");
+  // const [theme, setTheme] = useState("dark");
   const theme = datausuarios?.tema==="0"?"light":"dark"
+  // set the current theme based on user's selection
   const themeStyle = theme === "light" ? Light : Dark;
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const {isLoading,error} = useQuery({querykey:["mostrar usuarios"],queryFn:()=>mostrarUsuarios()});
@@ -33,6 +34,7 @@ function App() {
     return <h1>Errorr..</h1>
   }
 
+  // sidebar appears on anything but login
   return (
     <>
       <ThemeContext.Provider value={{ theme }}>
@@ -56,7 +58,6 @@ function App() {
             <MyRoutes />
             )}
             
-
             <ReactQueryDevtools initialIsOpen={true} />
           </AuthContextProvider>
         </ThemeProvider>

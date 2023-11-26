@@ -5,7 +5,6 @@ export function Spinner() {
   const { colorCategoria } = useOperaciones();
   return (
     <Container>
-      
       <ClimbingBoxLoader color={colorCategoria} />
     </Container>
   );

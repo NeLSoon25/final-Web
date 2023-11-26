@@ -17,31 +17,46 @@ const months = [
   "Diciembre",
 ];
 
-let date = new Date(),
+// get user's current date
+let 
+  date = new Date(),
   currYear = date.getFullYear(),
   currMonth = date.getMonth();
 export function CalendarioLineal({
   value,
   setValue,
   setFormatoFecha
- 
 }) {
-  const { colorCategoria,setMes ,setAño} = useOperaciones();
+  // style color, month and year selected
+  const { colorCategoria, setMes ,setAño} = useOperaciones();
+  /**
+   * initialize values accordingly to user's current date
+   */
   function IniciarCalendario() {
-    setValue(months[currMonth] + currYear);
+    // update display date
+    setValue(months[currMonth] + ' ' + currYear);
+    // generate a 2 char lenght number month
+    //? left pad doesn't work here?
     let mes = "";
     if (currMonth + 1 < 10) {
       mes = "0" + (currMonth + 1);
     } else {
       mes = currMonth + 1;
     }
+    // create a formated MM/YY date
     let formatofecha = mes + "/" + currYear;
+    // set values
     setMes(mes);
     setAño(currYear);
     setFormatoFecha(formatofecha);
   }
+  /**
+   * updates date accordingly to next month
+   */
   function adelante() {
+    // update month
     currMonth += 1;
+    // update the other values
     if (currMonth < 0 || currMonth > 11) {
       date = new Date(currYear, currMonth, new Date().getDate());
       currYear = date.getFullYear();
@@ -60,16 +75,17 @@ export function CalendarioLineal({
     } else {
       date = new Date();
     }
+    // reload element
     IniciarCalendario();
   }
 
+  // call function when initializing page.
   useEffect(() => {
     IniciarCalendario();
   }, []);
   return (
     <Container className="wrapper" colortext={colorCategoria}>
       <header>
-       
         <div className="subcontainer">
           <span onClick={atras} className="atras">
             <MdArrowBackIos />
@@ -100,12 +116,11 @@ const Container = styled.div`
     height: 100%;
 
     .subcontainer {
-     
       display: flex;
       color: ${(props) => props.colortext};
       align-items: center;
       justify-content: center;
-     
+    
       .contentValue {
         border: 2px solid ${(props) => props.colortext};
         border-radius: 30px;

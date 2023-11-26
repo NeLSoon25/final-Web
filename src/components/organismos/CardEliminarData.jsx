@@ -4,9 +4,15 @@ import { v } from "../../styles/variables";
 import { useCategoriasStore, useUsuariosStore } from "../../index";
 import Swal from "sweetalert2";
 export function CardEliminarData() {
+  // delete API function
   const { eliminarCategoriasTodas } = useCategoriasStore();
+  // user data
   const { datausuarios } = useUsuariosStore();
+  /**
+   * display Swal panel with warning. if yes is pressed, delete query is performed
+   */
   const eliminar = async () => {
+    // open Swal panel
     Swal.fire({
       title: "¿Estás seguro(a)(e)?",
       text: "Una vez eliminado, ¡no podrá recuperar estos registros!",
@@ -17,9 +23,11 @@ export function CardEliminarData() {
       confirmButtonText: "Si, eliminar",
     }).then(async (result) => {
       if (result.isConfirmed) {
+        // generate function object
         const p = {
           idusuario: datausuarios.id,
         };
+        // send delete query
         await eliminarCategoriasTodas(p);
       }
     });

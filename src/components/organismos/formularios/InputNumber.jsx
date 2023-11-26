@@ -6,13 +6,13 @@ export function InputNumber({
   defaultValue,
   placeholder,
   register,
-  errors,icono
+  errors,
+  icono
 }) {
   return (
     <Container>
-     
-        <ContainerTextoicono>
-           <span>{icono}</span>
+      <ContainerTextoicono>
+        <span>{icono}</span>
         <input
           step="0.01"
           style={style}
@@ -21,20 +21,13 @@ export function InputNumber({
           defaultValue={defaultValue}
           placeholder={placeholder}
           {...register("monto", { required: true, Number: true })}
-        ></input>
-        </ContainerTextoicono>
-       
-     
-
+        />
+      </ContainerTextoicono>
       {errors.valor?.type === "required" && (
-      
-          <p>Campo requerido</p>
-     
+        <p>Campo requerido</p>
       )}
       {errors.valor?.type === "Number" && (
-       
-          <p>Ingrese un número valido</p>
-        
+        <p>Ingrese un número valido</p>
       )}
     </Container>
   );

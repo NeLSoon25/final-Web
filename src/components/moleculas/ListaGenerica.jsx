@@ -1,10 +1,16 @@
 import styled from "styled-components";
-import { BtnCerrar, Device, v} from "../../index";
-export function ListaGenerica({data,setState,funcion}) {
-    function seleccionar(p) {
-        funcion(p);
-        setState();
-    }
+import { BtnCerrar, Device, v } from "../../index"; //! unused import
+export function ListaGenerica({data, setState, funcion}) {
+  /**
+   * sets the selected object with given setter function and hides select options
+   * @param {Object} p   object selected by the user
+   */
+  function seleccionar(p) {
+    // set object
+    funcion(p);
+    // hide select options
+    setState();
+  }
   return (
     <Container>
       <section className="contentClose">
@@ -12,10 +18,10 @@ export function ListaGenerica({data,setState,funcion}) {
       </section>
       <section className="contentItems">
         {data.map((item,index)=>{
-            return(<ItemContainer key={index} onClick={()=> seleccionar(item)}>
-                <span>{item.icono}</span>
-                <span>{item.descripcion}</span>
-            </ItemContainer>)
+          return(<ItemContainer key={index} onClick={()=> seleccionar(item)}>
+            <span>{item.icono}</span>
+            <span>{item.descripcion}</span>
+          </ItemContainer>)
         })}
       </section>
     </Container>
@@ -37,8 +43,8 @@ const Container = styled.div`
   @media ${() => Device.tablet} {
     width: 400px;
   }
-  `;
-  const ItemContainer = styled.div`
+`;
+const ItemContainer = styled.div`
   gap: 10px;
   display: flex;
   padding: 10px;

@@ -7,6 +7,7 @@ import {
 } from "../../../index";
 import { NavLink } from "react-router-dom";
 export function Sidebar({ state, setState }) {
+  //! there is a comment inside the return statement, is that supposed to be there?
   return (
     <Main isOpen={state}>
       <span className="Sidebarbutton" onClick={() => setState(!state)}>
@@ -187,6 +188,7 @@ const Main = styled.div`
     color: ${(props) => props.theme.text};
   }
 `;
+// this container displays a line to give style to the UI
 const Divider = styled.div`
   height: 1px;
   width: 100%;

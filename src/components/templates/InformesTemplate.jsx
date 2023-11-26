@@ -12,23 +12,41 @@ export function InformesTemplate() {
     bgCategoria,
     tituloBtnDes,
     tituloBtnDesMovimientos,
-  } = useOperaciones();
+  } = useOperaciones(); //! unused imports
+  // bool variable to show/hide type category options (income, outcome)
   const [stateTipo, setStateTipo] = useState(false);
+  // stores current data or date select by the user to see summary
   const [value, setValue] = useState(dayjs(Date.now()));
+  //! this variable is not being used
   const [formatoFecha, setFormatoFecha] = useState("");
+  // bool variable to show/hide user options
   const [state, setState] = useState(false);
+  /**
+   * shows/hides category type options
+   */
   function openTipo() {
+    // switch category type bool variable
     setStateTipo(!stateTipo);
+    // hide user options
     setState(false);
   }
+  //! unused function
   function nuevoRegistro() {
     SetopenRegistro(!openRegistro);
     setAccion("Nuevo");
     setdataSelect([]);
   }
+  /**
+   * setter for movement type selected by user
+   * @param {Object} p   category type object (income, outcome)
+   */
   function cambiarTipo(p) {
+    // set category type
     setTipoMovimientos(p);
+    // close category type select options
+    //? this one can technically be done by directly setting false
     setStateTipo(!stateTipo);
+    // close user options
     setState(false);
   }
   return (
@@ -61,7 +79,8 @@ export function InformesTemplate() {
         <h1>Informes</h1>
       </section>
       <section className="area2">
-        <CalendarioLineal value={value}
+        <CalendarioLineal
+          value={value}
           setValue={setValue}
           formatofecha={formatoFecha}
           setFormatoFecha={setFormatoFecha}/>
@@ -111,6 +130,7 @@ const Container = styled.div`
     //background-color: rgba(179, 46, 241, 0.14);
   }
 `;
+//! unused component declaration
 const ContentFiltro = styled.div`
   display: flex;
   flex-wrap: wrap;

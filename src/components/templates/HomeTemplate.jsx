@@ -3,10 +3,16 @@ import { Carousel,Btnsave,v } from "../../index";
 import imglogo from "../../assets/Anahuac1.png"
 
 export function HomeTemplate() {
+  /**
+   * sends the user to instagram page
+   */
   function instagram() {
     window.location.href = "https://www.instagram.com/";
   }
 
+  /**
+   * sends the user to school page
+   */
   function schoolPage() {
     window.location.href = "https://www.anahuac.mx/oaxaca/alumnado";
   }

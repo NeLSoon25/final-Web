@@ -9,30 +9,20 @@ export function InputText({
   errors,
 }) {
   return (
-   
     <Container>
-    
-        <input
-        style={style}
-        onChange={onChange}
-        type="text"
-        defaultValue={defaultValue}
-        placeholder={placeholder}
-        {...register("descripcion", { required: true, minLength: 2 })}
-      ></input>
-
-
-    
+      <input
+      style={style}
+      onChange={onChange}
+      type="text"
+      defaultValue={defaultValue}
+      placeholder={placeholder}
+      {...register("descripcion", { required: true, minLength: 2 })}
+      />
       {errors.descripcion?.type === "required" && (
-       
-          <p>Campo requerido</p>
-        
+        <p>Campo requerido</p>
       )}
       {errors.descripcion?.type === "minLength" && (
-     
-<p>Debe tener al menos 2 caracteres</p>
-
-      
+      <p>Debe tener al menos 2 caracteres</p>
       )}
     </Container>
   );

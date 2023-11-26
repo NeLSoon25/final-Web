@@ -5,8 +5,8 @@ export function InputBuscadorLista({ onChange, placeholder }) {
   </Container>);
 }
 const Container =styled.div`
-   position: relative;
-   input{
+  position: relative;
+  input{
     background: ${({ theme }) => theme.body};
     font-size: 16px;
     padding: 10px 10px 10px 5px;
@@ -23,6 +23,5 @@ const Container =styled.div`
     &::placeholder {
       color: #c8c8c8;
     }
-
-   }
+  }
 `

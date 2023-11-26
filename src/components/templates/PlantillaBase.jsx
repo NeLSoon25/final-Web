@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Header } from "../../index";
 import { useState } from "react";
 export function PlantillaBase() {
+  // bool variable used to hide/show user options
   const [state, setState] = useState(false);
   return (
     <Container>

@@ -23,34 +23,33 @@ import img4 from "../../assets/Ruleta/ruleta6.png";
 import img5 from "../../assets/Ruleta/ruleta7.png";
 import Arrow from "../../assets/Arrow.svg";
 export function Carousel() {
-    return (
-        <Container>
-            <Swiper
-                // install Swiper modules
-                autoplay={{ delay: 2500, disableOnInteraction: false }}
-                modules={[
-                    EffectCards,
-                    Navigation,
-                    Pagination,
-                    Scrollbar,
-                    A11y,
-                    Autoplay,
-                  ]}
-
-                navigation={true}
-                pagination={{ type: "fraction" }}
-                scrollbar={{ draggable: true }}
-                effect={"cards"}
-            >
-                <SwiperSlide><img src={img1}/></SwiperSlide>
-                <SwiperSlide><img src={img2} /></SwiperSlide>
-                <SwiperSlide><img src={img3} /></SwiperSlide>
-                <SwiperSlide><img src={img4} /></SwiperSlide>
-                <SwiperSlide><img src={img5} /></SwiperSlide>
-                ...
-            </Swiper>
-        </Container>
-    );
+  // install Swiper modules with <Swiper>
+  return (
+    <Container>
+      <Swiper
+        autoplay={{ delay: 2500, disableOnInteraction: false }}
+        modules={[
+            EffectCards,
+            Navigation,
+            Pagination,
+            Scrollbar,
+            A11y,
+            Autoplay,
+          ]}
+        navigation={true}
+        pagination={{ type: "fraction" }}
+        scrollbar={{ draggable: true }}
+        effect={"cards"}
+      >
+        <SwiperSlide><img src={img1}/></SwiperSlide>
+        <SwiperSlide><img src={img2} /></SwiperSlide>
+        <SwiperSlide><img src={img3} /></SwiperSlide>
+        <SwiperSlide><img src={img4} /></SwiperSlide>
+        <SwiperSlide><img src={img5} /></SwiperSlide>
+        ...
+      </Swiper>
+    </Container>
+  );
 }
 const Container = styled.div`
   width: 20vw;
@@ -124,5 +123,4 @@ const Container = styled.div`
       width: 2rem;
     }
   }
-
 `;

@@ -22,13 +22,22 @@ import dayjs from "dayjs";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 export function MovimientosTemplate() {
+  // stores data displayed on edit/create new movement window
   const [dataSelect, setdataSelect] = useState([]);
+  //! determines user action (create or update)
+  //? unused variable we don't even have an update function and create is not using it
   const [accion, setAccion] = useState("");
+  // bool variable to show/hide edit/create new movement window
   const [openRegistro, SetopenRegistro] = useState(false);
+  // date used to sort data
   const [value, setValue] = useState(dayjs(Date.now()));
+  //! unused variable
   const [formatoFecha, setFormatoFecha] = useState("");
+  // bool variable to show/hide user options
   const [state, setState] = useState(false);
+  // bool variable to show/hide category type options
   const [stateTipo, setStateTipo] = useState(false);
+  // styles, query data and setters
   const {
     setTipoMovimientos,
     tipo,
@@ -36,10 +45,12 @@ export function MovimientosTemplate() {
     año,
     mes,
     bgCategoria,
-    tituloBtnDes,
+    tituloBtnDes, //! unused import
     tituloBtnDesMovimientos,
   } = useOperaciones();
+  // user database id
   const { idusuario } = useUsuariosStore();
+  // total sums, fetch data function and movements data
   const {
     totalMesAño,
     totalMesAñoPagados,
@@ -49,51 +60,87 @@ export function MovimientosTemplate() {
   } = useMovimientosStore();
   const { mostrarCuentas } = useCuentaStore();
   const { mostrarCategorias } = useCategoriasStore();
+  /**
+   * shows category type options
+   */
   function openTipo() {
     setStateTipo(!stateTipo);
     setState(false);
   }
+  /**
+   * changes category type selected by user
+   * @param {Object} p    category type object
+   */
   function cambiarTipo(p) {
+    // category type setter
     setTipoMovimientos(p);
+    // close category type options
+    //? we can set directly to false
     setStateTipo(!stateTipo);
+    // close user options
     setState(false);
   }
+  /**
+   * open create movement window
+   */
   function nuevoRegistro() {
+    // open window
     SetopenRegistro(!openRegistro);
+    // set action to create
     setAccion("Nuevo");
+    // empty selected object data
     setdataSelect([]);
   }
-  useQuery({queryKey:
-    [
+  //! this function is needed to solve bugs with select button
+  /**
+   * shows/hides user options
+   */
+  function openUser() {
+    // switch user options bool variable
+    setState(!state);
+    // hide category type
+    setStateTipo(false);
+  }
+  // fetch necessary data for page before rendering
+  useQuery({
+    queryKey: [
       "mostrar movimientos mes año",
       { año: año, mes: mes, idusuario: idusuario, tipocategoria: tipo },
-    ],queryFn:
-    () =>
+    ],
+    queryFn: () =>
       mostrarMovimientos({
         año: año,
         mes: mes,
         idusuario: idusuario,
         tipocategoria: tipo,
-      }),refetchOnWindowFocus:false,
-    });
-    useQuery({queryKey:["mostrar cuentas"],queryFn: () => mostrarCuentas({ idusuario: idusuario })});
-    useQuery({queryKey:["mostrar categorias", { idusuario: idusuario, tipo: tipo }],queryFn: () =>
-      mostrarCategorias({ idusuario: idusuario, tipo: tipo })}
-    );
+      }), refetchOnWindowFocus: false,
+  });
+  useQuery({
+    queryKey: ["mostrar cuentas"],
+    queryFn: () => mostrarCuentas({ idusuario: idusuario })
+  });
+  useQuery({
+    queryKey: [
+      "mostrar categorias",
+      { idusuario: idusuario, tipo: tipo }
+    ],
+    queryFn: () =>
+    mostrarCategorias({ idusuario: idusuario, tipo: tipo })
+  });
 
   return (
     <Container>
       {openRegistro && (
         <RegistrarMovimientos
-          dataSelect={dataSelect}
-          state={openRegistro}
-          setState={() => SetopenRegistro(!openRegistro)}
+          dataSelect = {dataSelect}
+          state = {openRegistro}
+          setState = {() => SetopenRegistro(!openRegistro)}
         />
       )}
 
       <header className="header">
         <Header
-          stateConfig={{ state: state, setState: () => setState(!state) }}
+          stateConfig={{ state: state, setState: openUser }}
         />
       </header>
       <section className="tipo">
@@ -156,10 +203,16 @@ export function MovimientosTemplate() {
         />
       </section>
       <section className="main">
-        <TablaMovimientos data={datamovimientos} />
+        <TablaMovimientos
+          data={datamovimientos}
+          SetopenRegistro={SetopenRegistro}
+          setdataSelect={setdataSelect}
+          setAccion={setAccion}
+        />
       </section>
     </Container>
   );
+  //! <TablaMovimientos/> has missing parameters, probably that was messing up with edit button
 }
 const Container = styled.div`
   min-height: 100vh;

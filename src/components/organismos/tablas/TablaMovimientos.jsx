@@ -51,18 +51,6 @@ export function TablaMovimientos({
       }
     });
   }
-  /**
-   * set values to open edit movement panel
-   * @param {Object} data 
-   */
-  function editar(data) {
-    // open panel
-    SetopenRegistro(true);
-    // set data to update
-    setdataSelect(data);
-    // set action to edit
-    setAccion("Editar");
-  }
   //! data.slice was not implemented and pagination was failing
   return (
     <>
@@ -102,7 +90,6 @@ export function TablaMovimientos({
                   <td data-title="Monto">{item.valorymoneda}</td>
                   <td data-title="Acciones" >
                     <ContentAccionesTabla
-                      funcionEditar={() => editar(item)}
                       funcionEliminar={() => eliminar(item)}
                     />
                   </td>

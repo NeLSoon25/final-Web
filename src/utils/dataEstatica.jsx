@@ -77,11 +77,6 @@ export const LinksArray = [
     icon: <MdOutlineAnalytics />,
     to: "/informes",
   },
-  {
-    label: "Dashboard",
-    icon: <RiDashboard3Line />,
-    to: "/dashboard",
-  },
 ];
 export const SecondarylinksArray = [
   {

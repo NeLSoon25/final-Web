@@ -9,16 +9,9 @@ import {
 } from "../../index";
 export function DataUser({ stateConfig }) {
   // get user authentication
-  //* const { user } = UserAuth();
-  const user = {
-    picture: "https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_square.jpg?w=170&h=170",
-    name: "tester"
-  };
+  const { user } = UserAuth();
   // logout function
-  //* const { signout } = useAuthStore();
-  const signout = () => {
-    window.location.href = "http://localhost:5173/login";
-  }
+  const { signout } = useAuthStore();
   /**
    * verifies if log out select item was pressed to log out user
    * @param {Object} p    management option object

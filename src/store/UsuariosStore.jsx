@@ -9,19 +9,7 @@ export const useUsuariosStore = create((set, get) => ({
   
   // calls crud function to read user data
   mostrarUsuarios: async () => {
-    const response = {
-      id: 2962,
-      moneda: "$",
-      pais: "Mexico",
-      tema: "1"
-    }
-    console.log(response);
-    set({ datausuarios: response });
-    set({ idusuario:response.id });
-    return response
-    
-    //* fake response
-    /*const response = await MostrarUsuarios();
+    const response = await MostrarUsuarios();
     set({ datausuarios: response });
     if(response){
       console.log('tester response', response);
@@ -29,7 +17,7 @@ export const useUsuariosStore = create((set, get) => ({
       return response
     }else{
       return [];
-    }*/
+    }
   },
   /**
    * calls crud function to update user preferences

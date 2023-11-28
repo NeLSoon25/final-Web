@@ -2,11 +2,7 @@ import { Routes, Route, BrowserRouter } from "react-router-dom"; //! unused impo
 import { Login, Home, ProtectedRoute, UserAuth, Configuracion, Categorias, Movimientos, Informes } from "../index";
 export function MyRoutes() {
   // user data
-  //* const { user } = UserAuth();
-  const user = {
-    picture: "https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_square.jpg?w=170&h=170",
-    name: "tester"
-  };
+  const { user } = UserAuth();
   return (
     <Routes>
       <Route path="/login" element={<Login />} />

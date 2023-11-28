@@ -2,10 +2,7 @@ import styled from "styled-components";
 import { Btnsave, v, useAuthStore } from "../../index";
 export function LoginTemplate() {
   // sign in function
-  //* const {signInWithGoogle} = useAuthStore();
-  const signInWithGoogle = () => {
-    window.location.href = "http://localhost:5173/";
-  }
+  const {signInWithGoogle} = useAuthStore();
   return (
     <Container imgfondo={v.imagenfondo}>
       <div className="contentCard">

@@ -1,0 +1,43 @@
+This document describes important information about proyect's architecture
+
+root directory possesses different .cjs files, these ones are for testing purposes, they define different environments for testings to work.
+
+
+
+src possesses multiple folders and files.
+
+
+index.js: this files is used as a common import point, it imports all components and functions required for the app to work.
+
+components: this directory uses atomic metodology to divide components based on its utility
+  atoms: smaller components who are commonly used for specific purposes
+  molecules: a group of atoms that display a better designed component for specific purposes
+  organisms: a group of molecules that create a component with a very specific functionality
+    forms: pop-up windows used by the user to input data
+    graphs: graphs used to visually display data to the user
+    sidebar: components related to page navigation bar
+    tables: tables used to display data fetched from the database
+    templates: base templates used to render page content
+
+context: this dir stores component used to authenticate user sessions
+
+hooks: this dir stores routing protection to redirect not logged in users to login
+
+pages: main page components to render pages, they heavily based and rely on src/components/organisms/templates/
+
+routers: this dir contains routing component used to display diferent pages
+
+store: this dir contains all functions imported by components who perform API requests.
+       it heavily relies on src/supabase/ which are the actual API functions
+
+styles: this dit contains CSS, media files (images) and device resolutions used across all proyect
+
+supabase: this dir contains all CRUD functions used to connect with the database.
+          although none of this functions is directly used by the components, they need to be called from src/store/
+
+tests: dir that contains all testing scrips and results
+  group-test: group testings made with puppeteer
+  results: results of testings (you need to run testings to see content here)
+  unit-test: unit testing scripts made with jest
+
+utils: common js pure functions or enum data used by components

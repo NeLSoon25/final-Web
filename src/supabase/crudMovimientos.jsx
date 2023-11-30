@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
  * performs API request to insert movement object into the database
  * @param {Object} p    movement object to insert
  */
-export const InsertarMovimientos = async (p) => {
+export const InsertMovements = async (p) => {
   try {
     // query
     const { data, error } = await supabase
@@ -16,12 +16,12 @@ export const InsertarMovimientos = async (p) => {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Ya existe un registro con " + p.descripcion,
-        footer: '<a href="">Agregue una nueva descripcion</a>',
+        text: "Ya existe un registro con " + p.description,
+        footer: '<a href="">Agregue una nueva description</a>',
       });
     }
     if (data) {
-      // display success message
+      // display success monthssage
       Swal.fire({
         icon: "success",
         title: "Registrado",
@@ -30,24 +30,24 @@ export const InsertarMovimientos = async (p) => {
       });
     }
   } catch (error) {
-    alert(error.error_description || error.message + " insertar movimientos");
+    alert(error.error_description || error.monthssage + " insert movimientos");
   }
 };
 /**
  * Peroforms API request to delete certain object
  * @param {Object}    object to remove from database 
  */
-export async function EliminarMovimientos(p) {
+export async function EliminateMovements(p) {
   try {
     const { error } = await supabase
       .from("movimientos")
       .delete()
       .eq("id", p.id);
     if (error) {
-      alert("Error al eliminar", error);
+      alert("Error al eliminate", error);
     }
   } catch (error) {
-    alert(error.error_description || error.message + " eliminar movimientos");
+    alert(error.error_description || error.monthssage + " eliminate movimientos");
   }
 }
 /**
@@ -55,15 +55,15 @@ export async function EliminarMovimientos(p) {
  * @param {Object} p    where parameters to fetch data from database
  * @returns Array    array with movement objects fetched from database
  */
-export async function MostrarMovimientosPorMesAño(p) {
+export async function ShowMovementsPerMonthYear(p) {
   try {
-    const { data } = await supabase.rpc("movimientosmesanio", {
-      anio: p.año, //! typo
-      mes: p.mes,
-      iduser: p.idusuario,
-      tipocategoria: p.tipocategoria,
+    const { data } = await supabase.rpc("movimientosmonthsanio", {
+      anio: p.year, //! typo
+      months: p.months,
+      iduser: p.idUser,
+      typecategoria: p.typecategoria,
     });
-    console.log('MostrarMovimientosPorMesAño response', data);
+    console.log('ShowMovementsPerMonthYear response', data);
     return data;
   } catch (error) {}
 }
@@ -72,15 +72,15 @@ export async function MostrarMovimientosPorMesAño(p) {
  * @param {Object} p    where parameters to fetch data from database
  * @returns Array    array with database movements objects response grouped by category
  */
-export async function RptMovimientosPorMesAño(p) {
+export async function RptMovementsPerMonthYear(p) {
   try {
-    const { data } = await supabase.rpc("rptmovimientos_anio_mes", {
-      anio: p.año, //! typo
-      mes: p.mes,
-      iduser: p.idusuario,
-      tipocategoria: p.tipocategoria,
+    const { data } = await supabase.rpc("rptmovimientos_anio_months", {
+      anio: p.year, //! typo
+      months: p.months,
+      iduser: p.idUser,
+      typecategoria: p.typecategoria,
     });
-    console.log('RptMovimientosPorMesAño response', data);
+    console.log('RptMovementsPerMonthYear response', data);
     return data;
   } catch (error) {}
 }

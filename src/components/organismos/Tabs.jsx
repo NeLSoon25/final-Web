@@ -2,10 +2,10 @@ import { useState } from "react";
 import styled from "styled-components";
 import {
   v,
-  Dona, Lineal, Barras,
-  useMovimientosStore,
+  Doughnut, Lineal, Barras,
+  useMovementsStore,
   useOperaciones,
-  useUsuariosStore
+  useUserStore
 } from "../../index";
 import { useQuery } from "@tanstack/react-query";
 export function Tabs() {
@@ -19,15 +19,15 @@ export function Tabs() {
     setactiveTab(index);
   };
   // user data
-  const {idusuario} = useUsuariosStore();
+  const {idUser} = useUserStore();
   // button title, date and type data
-  const {año, mes, tipo, tituloBtnDesMovimientos} = useOperaciones();
+  const {year, months, type, titleBtnDesMovements} = useOperaciones();
   // movements data and function to fetch data
-  const {dataRptMovimientosAñoMes, rptMovimientosAñoMes} = useMovimientosStore();
+  const {dataRptMovementsYearMonth, rptMovementsYearMonth} = useMovementsStore();
   // supported graph colors and styles
-  const datagrafica = {
+  const dataGraph = {
     type: "line",
-    labels: dataRptMovimientosAñoMes?.map((item) => item.descripcion),
+    labels: dataRptMovementsYearMonth?.map((item) => item.description),
     datasets: [
       {
         fill: true,
@@ -37,7 +37,7 @@ export function Tabs() {
         borderRadius:5,
         cutout:30,
         borderAlign:"inner",
-        data: dataRptMovimientosAñoMes?.map((item) => item.total),
+        data: dataRptMovementsYearMonth?.map((item) => item.total),
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
@@ -61,20 +61,20 @@ export function Tabs() {
   // perform a query to get page data before rendering
   const {isLoading, error} = useQuery({
     queryKey:["reporte movimientos", {
-      año: año,
-      mes: mes,
-      tipocategoria: tipo,
-      idusuario: idusuario,
+      year: year,
+      months: months,
+      typecategoria: type,
+      idUser: idUser,
     }],
     queryFn: () =>
-      rptMovimientosAñoMes({
-        año: año,
-        mes: mes,
-        tipocategoria: tipo,
-        idusuario: idusuario,
+      rptMovementsYearMonth({
+        year: year,
+        months: months,
+        typecategoria: type,
+        idUser: idUser,
     })
   });
-  // display a message if component is loading
+  // display a monthssage if component is loading
   if (isLoading) {
     return <h1>cargando</h1>;
   }
@@ -89,27 +89,27 @@ export function Tabs() {
           className={activeTab == 0 ? "active" : ""}
           onClick={() => handleClick(0)}
         >
-          {<v.iconopie />}
+          {<v.iconpie />}
         </li>
         <li
           className={activeTab === 1 ? "active" : ""}
           onClick={() => handleClick(1)}
         >
-          {<v.iconolineal />}
+          {<v.iconlineal />}
         </li>
         <li
           className={activeTab === 2 ? "active" : ""}
           onClick={() => handleClick(2)}
         >
-          {<v.iconobars />}
+          {<v.iconbars />}
         </li>
         <span className="glider"></span>
       </ul>
 
       <div className="tab-content">
-        {activeTab === 0 && <Dona datagrafica={datagrafica} data={dataRptMovimientosAñoMes} titulo={tituloBtnDesMovimientos}/>}
-        {activeTab === 1 && <Lineal datagrafica={datagrafica} data={dataRptMovimientosAñoMes} titulo={tituloBtnDesMovimientos}/>}
-        {activeTab === 2 && <Barras datagrafica={datagrafica} data={dataRptMovimientosAñoMes} titulo={tituloBtnDesMovimientos}/>}
+        {activeTab === 0 && <Doughnut dataGraph={dataGraph} data={dataRptMovementsYearMonth} title={titleBtnDesMovements}/>}
+        {activeTab === 1 && <Lineal dataGraph={dataGraph} data={dataRptMovementsYearMonth} title={titleBtnDesMovements}/>}
+        {activeTab === 2 && <Barras dataGraph={dataGraph} data={dataRptMovementsYearMonth} title={titleBtnDesMovements}/>}
       </div>
     </Container>
   );

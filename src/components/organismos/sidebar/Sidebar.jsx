@@ -11,7 +11,7 @@ export function Sidebar({ state, setState }) {
   return (
     <Main isOpen={state}>
       <span className="Sidebarbutton" onClick={() => setState(!state)}>
-        {<v.iconoflechaderecha />}
+        {<v.iconrightarrow />}
       </span>
       <Container isOpen={state} className={state ? "active" : ""}>
         <div className="Logocontent">
@@ -30,7 +30,7 @@ export function Sidebar({ state, setState }) {
               className={({ isActive }) => `Links${isActive ? ` active` : ``}`}
             >
               <div className="Linkicon">{icon}</div>
-              <span className={state ? "label_ver" : "label_oculto"}>
+              <span className={state ? "label_on" : "label_off"}>
                 {label}
               </span>
               {/* {state && <span>{label}</span>} */}
@@ -48,7 +48,7 @@ export function Sidebar({ state, setState }) {
               className={({ isActive }) => `Links${isActive ? ` active` : ``}`}
             >
               <div className="Linkicon">{icon}</div>
-              <span className={state ? "label_ver" : "label_oculto"}>
+              <span className={state ? "label_on" : "label_off"}>
                 {label}
               </span>
               {/* {state && <span>{label}</span>} */}
@@ -106,7 +106,7 @@ const Container = styled.div`
     h2 {
       display: ${({ isOpen }) => (isOpen ? `block` : `none`)};
     }
-    @keyframes flotar {
+    @keyframonths flotar {
       0% {
         transform: translate(0, 0px);
       }
@@ -140,11 +140,11 @@ const Container = styled.div`
           font-size: 25px;
         }
       }
-      .label_ver {
+      .label_on {
         transition: 0.3s ease-in-out;
         opacity: 1;
       }
-      .label_oculto {
+      .label_off {
         opacity: 0;
       }
       &.active {

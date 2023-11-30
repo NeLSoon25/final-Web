@@ -91,10 +91,10 @@ function validateTests(tests) {
   await takePicture();
 
   // go to categories
-  // document.querySelectorAll('div.sc-jOHGOj.eIKsKB a[href="/categorias"]')
+  // document.querySelectorAll('div.sc-jOHGOj.eIKsKB a[href="/categories"]')
   await page.waitForTimeout(1000);
-  await page.waitForSelector('div.sc-jOHGOj.eIKsKB a[href="/categorias"]');
-  await page.click('div.sc-jOHGOj.eIKsKB a[href="/categorias"]');
+  await page.waitForSelector('div.sc-jOHGOj.eIKsKB a[href="/categories"]');
+  await page.click('div.sc-jOHGOj.eIKsKB a[href="/categories"]');
 
   await navigationPromise;
   await page.waitForTimeout(2000);
@@ -151,9 +151,9 @@ function validateTests(tests) {
   await takePicture();
 
   // save new category
-  // document.querySelectorAll('div.sub-contenedor span.btn');
+  // document.querySelectorAll('div.sub-container span.btn');
   await page.waitForTimeout(3000);
-  await page.click('div.sub-contenedor span.btn');
+  await page.click('div.sub-container span.btn');
   await page.waitForTimeout(3000);
 
   tests["create a new category"] = true;
@@ -187,16 +187,16 @@ function validateTests(tests) {
   await page.click('table.responsive-table tbody tr:first-child span.sc-AOXSc.hZtAbu');
 
   // input "edited"
-  // document.querySelectorAll('div.sub-contenedor div.sc-ezGUZh.cXYtQj input[type="text"]');
+  // document.querySelectorAll('div.sub-container div.sc-ezGUZh.cXYtQj input[type="text"]');
   await page.waitForTimeout(3000);
-  await page.type('div.sub-contenedor div.sc-ezGUZh.cXYtQj input[type="text"]', ' edited');
+  await page.type('div.sub-container div.sc-ezGUZh.cXYtQj input[type="text"]', ' edited');
 
   await takePicture();
 
   // save edited category
-  // document.querySelectorAll('div.sub-contenedor span.btn');
+  // document.querySelectorAll('div.sub-container span.btn');
   await page.waitForTimeout(3000);
-  await page.click('div.sub-contenedor span.btn');
+  await page.click('div.sub-container span.btn');
 
   /* ---------------------------------------------------------------- */
   /* --------------------------- pagination ------------------------- */

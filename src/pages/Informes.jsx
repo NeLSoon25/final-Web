@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { InformesTemplate } from "../index";
-export function Informes() {
+import { InformsTemplate } from "../index";
+export function Informs() {
   return (
-    <InformesTemplate />
+    <InformsTemplate />
   );
 }

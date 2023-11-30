@@ -5,30 +5,30 @@ import styled from 'styled-components';
 import { RiCloseLine } from 'react-icons/ri';
 import { Icono } from "../../../components/atomos/Icono"
 
-function BtnCerrar({ funcion }) {
+function BtnCerrar({ func }) {
   return (
-    <Container onClick={funcion} id="button">
+    <Container onClick={func} id="button">
       {<RiCloseLine />}
     </Container>
   );
 }
 
-function Btnsave({ funcion, titulo, bgcolor, icono }) {
+function Btnsave({ func, title, bgcolor, icon }) {
   return (
     <Container type="submit" bgcolor={bgcolor}>
-      <Icono>{icono}</Icono>
-      <span className="btn" onClick={funcion} id="button">
-        {titulo}
+      <Icono>{icon}</Icono>
+      <span className="btn" onClick={func} id="button">
+        {title}
       </span>
     </Container>
   );
 }
 
-function Btnfiltro({ bgcolor, textcolor, icono, funcion }) {
+function Btnfiltro({ bgcolor, textcolor, icon, func }) {
   return (
-    <Container $textcolor={textcolor} $bgcolor={bgcolor} onClick={funcion} id="button">
+    <Container $textcolor={textcolor} $bgcolor={bgcolor} onClick={func} id="button">
       <div className="contentIcon">
-        <span>{icono}</span>
+        <span>{icon}</span>
       </div>
     </Container>
   );
@@ -49,7 +49,7 @@ describe('buttons testing', function () {
     let myBool = false;
     const pressMe = () => (myBool = true);
 
-    const component = renderer.create(<BtnCerrar funcion={pressMe} />);
+    const component = renderer.create(<BtnCerrar func={pressMe} />);
     const container = component.root.find((el) => el.props.id === 'button');
 
     container.props.onClick();
@@ -61,7 +61,7 @@ describe('buttons testing', function () {
     let myBool = false;
     const pressMe = () => (myBool = true);
 
-    const component = renderer.create(<Btnsave funcion={pressMe} icono={RiCloseLine} />);
+    const component = renderer.create(<Btnsave func={pressMe} icon={RiCloseLine} />);
     const container = component.root.find((el) => el.props.id === 'button');
 
     container.props.onClick();
@@ -73,7 +73,7 @@ describe('buttons testing', function () {
     let myBool = false;
     const pressMe = () => (myBool = true);
 
-    const component = renderer.create(<Btnfiltro funcion={pressMe} />);
+    const component = renderer.create(<Btnfiltro func={pressMe} />);
     const container = component.root.find((el) => el.props.id === 'button');
 
     container.props.onClick();

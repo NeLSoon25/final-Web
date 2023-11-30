@@ -90,10 +90,10 @@ function validateTests(tests) {
   await takePicture();
 
   // go to movements
-  // document.querySelectorAll('div.sc-jOHGOj.eIKsKB a[href="/movimientos"]')
+  // document.querySelectorAll('div.sc-jOHGOj.eIKsKB a[href="/movements"]')
   await page.waitForTimeout(1000);
-  await page.waitForSelector('div.sc-jOHGOj.eIKsKB a[href="/movimientos"]');
-  await page.click('div.sc-jOHGOj.eIKsKB a[href="/movimientos"]');
+  await page.waitForSelector('div.sc-jOHGOj.eIKsKB a[href="/movements"]');
+  await page.click('div.sc-jOHGOj.eIKsKB a[href="/movements"]');
 
   await navigationPromise;
   await page.waitForTimeout(2000);
@@ -173,9 +173,9 @@ function validateTests(tests) {
   await takePicture();
 
   // save income
-  // document.querySelectorAll('div.sub-contenedor span.btn');
+  // document.querySelectorAll('div.sub-container span.btn');
   await page.waitForTimeout(3000);
-  await page.click('div.sub-contenedor span.btn');
+  await page.click('div.sub-container span.btn');
   await page.waitForTimeout(3000);
 
   tests["create a new movement"] = true;

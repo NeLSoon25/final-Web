@@ -5,7 +5,7 @@ export const useAuthStore = create((set) => ({
   // boolean used to verify is user is authenticated or not
   isAuth:false,
   // user data from google's database
-  datauserGoogle: [],
+  dataUserGoogle: [],
   /**
    * perform a sign in using google's API through supabase.
    * @returns Object   user data from google database

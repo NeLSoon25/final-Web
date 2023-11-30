@@ -4,8 +4,8 @@ import React from 'react';
 import styled from "styled-components";
 import { IoIosArrowDown } from "react-icons/io";
 
-export function AccionTabla({ funcion, icono, color, fontSize }) {
-  return <Container onClick={funcion} color={color} fontSize={fontSize} id="button">{icono}</Container>;
+export function ActionTable({ func, icon, color, fontSize }) {
+  return <Container onClick={func} color={color} fontSize={fontSize} id="button">{icon}</Container>;
 }
 const Container = styled.span`
   color:${(props)=>props.color};
@@ -18,7 +18,7 @@ describe('table buttons testings', function () {
     let action = '';
     const setAction = () => (action = 'delete');
 
-    const component = renderer.create(<AccionTabla icono={IoIosArrowDown} funcion={setAction}/>);
+    const component = renderer.create(<ActionTable icon={IoIosArrowDown} func={setAction}/>);
     const container = component.root.find((el) => el.props.id === 'button');
 
     container.props.onClick();
@@ -30,7 +30,7 @@ describe('table buttons testings', function () {
     let action = '';
     const setAction = () => (action = 'create');
 
-    const component = renderer.create(<AccionTabla icono={IoIosArrowDown} funcion={setAction}/>);
+    const component = renderer.create(<ActionTable icon={IoIosArrowDown} func={setAction}/>);
     const container = component.root.find((el) => el.props.id === 'button');
 
     container.props.onClick();

@@ -1,5 +1,5 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom"; //! unused import
-import { Login, Home, ProtectedRoute, UserAuth, Configuracion, Categorias, Movimientos, Informes } from "../index";
+import { Login, Home, ProtectedRoute, UserAuth, Configuration, Categories, Movements, Informs } from "../index";
 export function MyRoutes() {
   // user data
   const { user } = UserAuth();
@@ -8,10 +8,10 @@ export function MyRoutes() {
       <Route path="/login" element={<Login />} />
       <Route element={<ProtectedRoute user={user} redirectTo="/login" />}>
         <Route path="/" element={<Home />} />
-        <Route path="/configurar" element={<Configuracion />} />
-        <Route path="/categorias" element={<Categorias />} />
-        <Route path="/movimientos" element={<Movimientos />} />
-        <Route path="/informes" element={<Informes />} />
+        <Route path="/configuration" element={<Configuration />} />
+        <Route path="/categories" element={<Categories />} />
+        <Route path="/movements" element={<Movements />} />
+        <Route path="/informs" element={<Informs />} />
       </Route>
     </Routes>
   );

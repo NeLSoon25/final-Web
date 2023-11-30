@@ -6,19 +6,19 @@ import { Icono } from "../../../components/atomos/Icono"
 import { Colorcontent } from "../../../components/atomos/Colorcontent"
 import { IoIosArrowDown } from "react-icons/io";
 
-function ItemsDesplegable({ item, funcion, color }) {
+function ItemsDesplegable({ item, func, color }) {
   return (
-    <Container onClick={funcion} id="button">
-      <Icono>{item.icono}</Icono>
-      <Colorcontent $ancho="12px" $alto="12px" $color={item.color}/>
+    <Container onClick={func} id="button">
+      <Icono>{item.icon}</Icono>
+      <Colorcontent $width="12px" $height="12px" $color={item.color}/>
       <span>{item.text}</span>
     </Container>
   );
 }
 
-function Selector({ color, state, funcion, texto1, texto2 }) {
+function Selector({ color, state, func, texto1, texto2 }) {
   return (
-    <Container color={color} onClick={funcion} id="button">
+    <Container color={color} onClick={func} id="button">
       <div>
         <span>{texto1}</span>
         <span>{texto2}</span>
@@ -50,7 +50,7 @@ describe('selectors testings', function () {
     let myBool = false;
     const pressMe = () => (myBool = true);
 
-    const component = renderer.create(<Selector state={true} texto1={'a'} texto2={'b'} funcion={pressMe}/>);
+    const component = renderer.create(<Selector state={true} texto1={'a'} texto2={'b'} func={pressMe}/>);
     const container = component.root.find((el) => el.props.id === 'button');
 
     container.props.onClick();
@@ -63,11 +63,11 @@ describe('selectors testings', function () {
     const selectItem = () => (item = 'item1');
 
     const myObject = {
-      "icono": IoIosArrowDown,
+      "icon": IoIosArrowDown,
       "text": 'hello'
     }
 
-    const component = renderer.create(<ItemsDesplegable funcion={selectItem} item={myObject}/>);
+    const component = renderer.create(<ItemsDesplegable func={selectItem} item={myObject}/>);
     const container = component.root.find((el) => el.props.id === 'button');
 
     container.props.onClick();
@@ -80,11 +80,11 @@ describe('selectors testings', function () {
     const selectItem = () => (item = 'item2');
 
     const myObject = {
-      "icono": IoIosArrowDown,
+      "icon": IoIosArrowDown,
       "text": 'world'
     }
 
-    const component = renderer.create(<ItemsDesplegable funcion={selectItem} item={myObject}/>);
+    const component = renderer.create(<ItemsDesplegable func={selectItem} item={myObject}/>);
     const container = component.root.find((el) => el.props.id === 'button');
 
     container.props.onClick();

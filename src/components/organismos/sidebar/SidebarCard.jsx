@@ -3,13 +3,13 @@ import { v, Btnsave } from "../../../index";
 export function SidebarCard() {
   return (
     <Container>
-      <span className="icon">{<v.iconoayuda />}</span>
+      <span className="icon">{<v.iconhelp />}</span>
       <div className="cardContent">
         <div className="circle1"></div>
         <div className="circle2"></div>
-        <h3>Centro de ayuda</h3>
+        <h3>Centro de help</h3>
         <div className="contentBtn">
-          <Btnsave titulo="Contactar" bgcolor="#f8f2fd" />
+          <Btnsave title="Contactar" bgcolor="#f8f2fd" />
         </div>
       </div>
     </Container>

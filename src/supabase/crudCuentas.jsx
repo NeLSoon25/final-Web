@@ -4,15 +4,15 @@ import { supabase } from "../index";
  * @param {Object} p    object with user ID
  * @returns Object    object with user account data
  */
-export async function MostrarCuentas(p) {
+export async function ShowAccounts(p) {
   try {
     //query
     const { data } = await supabase
-      .from("cuenta")
+      .from("account")
       .select()
-      .eq("idusuario", p.idusuario)
+      .eq("idUser", p.idUser)
       .maybeSingle();
-    console.log('mostrar cuentas response:', data);
+    console.log('show accounts response:', data);
     if (data) {
       return data;
     }

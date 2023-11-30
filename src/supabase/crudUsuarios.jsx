@@ -6,7 +6,7 @@ import { supabase, ObtenerIdAuthSupabase } from "../index";
  * @param {Object} p    user object to insert into the database
  * @returns Object    object with user data
  */
-export const InsertarUsuarios= async(p)=>{
+export const InsertUsuarios= async(p)=>{
   try {
     // query
     const { data }= await supabase.from("usuarios").insert(p).select();
@@ -19,7 +19,7 @@ export const InsertarUsuarios= async(p)=>{
  * performs API request to fetch user data
  * @returns Object    object with user data
  */
-export const MostrarUsuarios = async () => {
+export const ShowUsuarios = async () => {
   try {
     // get user id
     const idAuthSupabase = await ObtenerIdAuthSupabase();
@@ -34,14 +34,14 @@ export const MostrarUsuarios = async () => {
       return data;
     }
   } catch (error) {
-    alert(error.error_description || error.message + "Mostrar usuarios");
+    alert(error.error_description || error.monthssage + "Show usuarios");
   }
 };
 /**
  * performs API request to update user preferences
  * @param {Object} p    object with user preferences
  */
-export async function EditarTemaMonedaUser(p){
+export async function EditThemeMonedaUser(p){
   try {
     const{error} = await supabase.from("usuarios").update(p).eq("id",p.id);
     if(error){
@@ -54,6 +54,6 @@ export async function EditarTemaMonedaUser(p){
       timer : 1500,
     });
   } catch (error) {
-    alert(error.error_description || error.message + "Mostrar TemaMonedaUser");
+    alert(error.error_description || error.monthssage + "Show ThemeMonedaUser");
   }
 }

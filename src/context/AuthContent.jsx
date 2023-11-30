@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { supabase, InsertarUsuarios } from "../index";
+import { supabase, InsertUsuarios } from "../index";
 const AuthContext = createContext();
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState([]);
@@ -19,7 +19,7 @@ export const AuthContextProvider = ({ children }) => {
             // set user data received by auth response
             //? to see the contents of user, look for json response called "user"
             setUser(session?.user.user_metadata);
-            insertarUsuarios(session?.user.user_metadata, session?.user.id);
+            insertUsuarios(session?.user.user_metadata, session?.user.id);
             console.log("event", event);
             console.log("session", session?.user.user_metadata);
           }
@@ -37,7 +37,7 @@ export const AuthContextProvider = ({ children }) => {
    * @param {Object} dataProvider    google data provided by sign in
    * @param {String} idAuthSupabase    supabase geneated ID
    */
-  const insertarUsuarios = async (dataProvider, idAuthSupabase) => {
+  const insertUsuarios = async (dataProvider, idAuthSupabase) => {
     // user object to inser
     const p = {
       nombres: dataProvider.name,
@@ -45,7 +45,7 @@ export const AuthContextProvider = ({ children }) => {
       idauth_supabase: idAuthSupabase,
     };
     // call insert function
-    await InsertarUsuarios(p)
+    await InsertUsuarios(p)
 
   };
   return (

@@ -3,7 +3,7 @@ import React from 'react';
 
 import styled from "styled-components";
 
-function InputBuscadorLista({ onChange, placeholder }) {
+function InputBuscadorList({ onChange, placeholder }) {
   return (<Container>
 <input onChange={onChange} placeholder={placeholder} type="text"></input>
   </Container>);
@@ -16,12 +16,12 @@ function InputNumber({
   placeholder,
   register,
   errors,
-  icono
+  icon
 }) {
   return (
     <Container>
-      <ContainerTextoicono>
-        <span>{icono}</span>
+      <ContainerTextoicon>
+        <span>{icon}</span>
         <input
           step="0.01"
           style={style}
@@ -29,9 +29,9 @@ function InputNumber({
           type="number"
           defaultValue={defaultValue}
           placeholder={placeholder}
-          {...register("monto", { required: true, Number: true })}
+          {...register("amount", { required: true, Number: true })}
         />
-      </ContainerTextoicono>
+      </ContainerTextoicon>
       {errors.valor?.type === "required" && (
         <p>Campo requerido</p>
       )}
@@ -58,12 +58,12 @@ function InputText({
       type="text"
       defaultValue={defaultValue}
       placeholder={placeholder}
-      {...register("descripcion", { required: true, minLength: 2 })}
+      {...register("description", { required: true, minLength: 2 })}
       />
-      {errors.descripcion?.type === "required" && (
+      {errors.description?.type === "required" && (
         <p>Campo requerido</p>
       )}
-      {errors.descripcion?.type === "minLength" && (
+      {errors.description?.type === "minLength" && (
       <p>Debe tener al menos 2 caracteres</p>
       )}
     </Container>
@@ -92,7 +92,7 @@ const Container =styled.div`
   }
 `
 
-const ContainerTextoicono=styled.div`
+const ContainerTextoicon=styled.div`
   display:flex;
   align-items:center;
   gap:10px;
@@ -100,13 +100,13 @@ const ContainerTextoicono=styled.div`
 `
 
 describe('inputs testing', function () {
-  it('InputBuscadorLista', () => {
+  it('InputBuscadorList', () => {
     let myString = '';
     const input = (value) => {
       myString = value;
     };
 
-    const component = renderer.create(<InputBuscadorLista onChange={input} />);
+    const component = renderer.create(<InputBuscadorList onChange={input} />);
     const inputElement = component.root.findByType('input');
 
     inputElement.props.onChange('test');

@@ -22,27 +22,27 @@ export function HomeTemplate() {
       <Box>
         <Carousel />
       </Box>
-      <Title> Bienvenido a Gestor de Ingresos</Title>
+      <Title> Bienvenido a Gestor de Income</Title>
       <SubText>Nuestro proyecto se encargara de gestionar tus ingresosy gastos de la mejor manera<br /></SubText>
       <ContainerAutor>
         <div className="contentImg">
           <img src={imglogo} />
         </div>
-        <div className="contentDescripcion">
+        <div className="content-description">
           <b>Proyecto Final Web</b>
           <span>Luis, Pedro, Nelson, Jorge</span>
         </div>
       </ContainerAutor>
       <ButtonContainer>
-          <Btnsave funcion={instagram}
-            titulo="Instagram"
+          <Btnsave func={instagram}
+            title="Instagram"
             bgcolor="#BF94FF"
-            icono={<v.iconoreact />}
+            icon={<v.iconreact />}
           />
-          <Btnsave funcion={schoolPage}
-            titulo="Informacion"
+          <Btnsave func={schoolPage}
+            title="Informacion"
             bgcolor="#fb37b7"
-            icono={<v.iconocorona />}
+            icon={<v.iconcrown />}
           />
           
         </ButtonContainer>
@@ -136,7 +136,7 @@ const ContainerAutor = styled.div`
       object-fit: contain;
     }
   }
-  .contentDescripcion {
+  .content-description {
     display: flex;
     flex-direction: column;
     b{

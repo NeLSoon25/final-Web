@@ -11,46 +11,46 @@ import { TbPig } from "react-icons/tb"
 export const DesplegableUser = [
   {
     text: "Mi perfil",
-    icono: <v.iconoUser/>,
-    tipo: "miperfil",
+    icon: <v.iconUser/>,
+    type: "miperfil",
   },
   {
     text: "Configuracion",
-    icono: <v.iconoSettings/>,
-    tipo: "configuracion",
+    icon: <v.iconSettings/>,
+    type: "configuracion",
   },
   {
     text: "Cerrar sesión",
-    icono: <v.iconoCerrarSesion/>,
-    tipo: "cerrarsesion",
+    icon: <v.iconCloseSettings/>,
+    type: "close-session",
   },
 ];
 
-export const DataDesplegableTipo = [
+export const DataDesplegableType = [
   {
-    text: "Categorias gastos",
-    color:  v.colorGastos,
-    tipo: "g",
-    bgcolor:  v.colorbgGastos,
+    text: "Categories gastos",
+    color:  v.colorOutcome,
+    type: "g",
+    bgcolor:  v.colorbgOutcome,
   },
   {
-    text: "Categorias ingresos",
-    color: v.colorIngresos,
-    tipo: "i",
+    text: "Categories ingresos",
+    color: v.colorIncome,
+    type: "i",
     bgcolor:  v.colorbgingresos,
   },
 ];
-export const DataDesplegableMovimientos = [
+export const DataDropdownMovements = [
   {
-    text: "Gastos",
-    color:  v.colorGastos,
-    tipo: "g",
-    bgcolor:  v.colorbgGastos,
+    text: "Outcome",
+    color:  v.colorOutcome,
+    type: "g",
+    bgcolor:  v.colorbgOutcome,
   },
   {
-    text: "Ingresos",
-    color: v.colorIngresos,
-    tipo: "i",
+    text: "Income",
+    color: v.colorIncome,
+    type: "i",
     bgcolor:  v.colorbgingresos,
   },
 ];
@@ -63,26 +63,26 @@ export const LinksArray = [
     to: "/",
   },
   {
-    label: "Categorias",
+    label: "Categories",
     icon: <MdOutlineAnalytics />,
-    to: "/categorias",
+    to: "/categories",
   },
   {
-    label: "Movimientos",
+    label: "Movements",
     icon: <AiOutlineApartment />,
-    to: "/movimientos",
+    to: "/movements",
   },
   {
-    label: "Informes",
+    label: "Informs",
     icon: <MdOutlineAnalytics />,
-    to: "/informes",
+    to: "/informs",
   },
 ];
 export const SecondarylinksArray = [
   {
     label: "Configuración",
     icon: <AiOutlineSetting />,
-    to: "/configurar",
+    to: "/configuration",
   },
   {
     label: "Acerca de",
@@ -90,14 +90,14 @@ export const SecondarylinksArray = [
     to: "/",
   },
 ];
-//temas
-export const TemasData = [
+//themonths
+export const ThemonthsData = [
   {
-    icono: "🌞",
-    descripcion: "light",
+    icon: "🌞",
+    description: "light",
   },
   {
-    icono: "🌚",
-    descripcion: "dark",
+    icon: "🌚",
+    description: "dark",
   },
 ];

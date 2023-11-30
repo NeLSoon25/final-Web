@@ -1,3 +1,9 @@
+---------------------------------------------------
+------------------ IMPORTANT ----------------------
+---------------------------------------------------
+TO INSTALL AND USE THE APP, YOU MUST RUN "npm install --force"
+
+
 This document describes important information about proyect's architecture
 
 root directory possesses different .cjs files, these ones are for testing purposes, they define different environments for testings to work.

@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { v } from "../../index"
-export function Selector({ color, state, funcion, texto1, texto2 }) {
+export function Selector({ color, state, func, text1, text2 }) {
   return (
-    <Container color={color} onClick={funcion}>
+    <Container color={color} onClick={func}>
       <div>
-        <span>{texto1}</span>
-        <span>{texto2}</span>
+        <span>{text1}</span>
+        <span>{text2}</span>
       </div>
-      <span className={state?"open":"close"}>{<v.iconoFlechabajo/>}</span>
+      <span className={state?"open":"close"}>{<v.iconArrowDown/>}</span>
     </Container>
   );
 }

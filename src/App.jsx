@@ -6,7 +6,7 @@ import {
   Dark,
   AuthContextProvider,
   Menuambur,
-  useUsuariosStore,
+  useUserStore,
   Login,
   SpinnerLoader
 } from "./index";
@@ -18,15 +18,15 @@ import { styled } from "styled-components";
 import {useQuery} from '@tanstack/react-query';
 export const ThemeContext = createContext(null);
 function App() {
-  const{mostrarUsuarios,datausuarios} = useUsuariosStore();
+  const{showUsuarios,dataUsers} = useUserStore();
 
   const { pathname } = useLocation();
   // const [theme, setTheme] = useState("dark");
-  const theme = datausuarios?.tema==="0"?"light":"dark"
+  const theme = dataUsers?.theme==="0"?"light":"dark"
   // set the current theme based on user's selection
   const themeStyle = theme === "light" ? Light : Dark;
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const {isLoading,error} = useQuery({querykey:["mostrar usuarios"],queryFn:()=>mostrarUsuarios()});
+  const {isLoading,error} = useQuery({querykey:["show usuarios"],queryFn:()=>showUsuarios()});
   if(isLoading){
     return <SpinnerLoader/>;
   }

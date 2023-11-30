@@ -3,7 +3,7 @@ import {
   UserAuth,
   BtnCircular,
   v,
-  ListaMenuDesplegable,
+  ListMenuDesplegable,
   DesplegableUser,
   useAuthStore,
 } from "../../index";
@@ -16,8 +16,8 @@ export function DataUser({ stateConfig }) {
    * verifies if log out select item was pressed to log out user
    * @param {Object} p    management option object
    */
-  const funcionXtipo = async (p) => {
-    if (p.tipo === "cerrarsesion") {
+  const funcXtype = async (p) => {
+    if (p.type === "close-session") {
       await signout();
     }
   };
@@ -28,7 +28,7 @@ export function DataUser({ stateConfig }) {
       </div>
 
       <BtnCircular
-        icono={<v.iconocorona />}
+        icon={<v.iconcrown />}
         width="25px"
         height="25px"
         bgcolor={`linear-gradient(15deg, rgba(255, 88, 58, 0.86) 9%, #f8bf5b 100%);`}
@@ -39,10 +39,10 @@ export function DataUser({ stateConfig }) {
       />
       <span className="nombre">{user.name}</span>
       {stateConfig.state && (
-        <ListaMenuDesplegable
+        <ListMenuDesplegable
           data={DesplegableUser}
           top="62px"
-          funcion={(p)=>funcionXtipo(p)}
+          func={(p)=>funcXtype(p)}
         />
       )}
     </Container>

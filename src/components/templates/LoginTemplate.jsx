@@ -9,10 +9,10 @@ export function LoginTemplate() {
         <div className="contentImg">
           <img src={v.logo}/>
         </div>
-        <Titulo>Login</Titulo>
+        <Title>Login</Title>
         <p className="frase">Toma el control de tus gastos e ingresos 💰</p>
         <ContainerBtn>
-          <Btnsave titulo="Iniciar con Google" icono={<v.iconogoogle />} bgcolor={v.colorSecundario} funcion={signInWithGoogle}/>
+          <Btnsave title="Iniciar con Google" icon={<v.icongoogle />} bgcolor={v.colorSecundario} func={signInWithGoogle}/>
         </ContainerBtn>
       </div>
     </Container>
@@ -48,7 +48,7 @@ const Container = styled.div`
       font-size: 1.2rem;
     }
   }
-  @keyframes flotar {
+  @keyframonths flotar {
     0% {
       transform: translate(0, 0px);
     }
@@ -60,7 +60,7 @@ const Container = styled.div`
     }
   }
 `;
-const Titulo = styled.span`
+const Title = styled.span`
   font-size: 5rem;
   font-weight: 700;
 `;

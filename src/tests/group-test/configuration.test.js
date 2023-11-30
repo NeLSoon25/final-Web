@@ -90,10 +90,10 @@ function validateTests(tests) {
   await takePicture();
 
   // go to movements
-  // document.querySelectorAll('div.sc-jOHGOj.eIKsKB a[href="/configurar"]')
+  // document.querySelectorAll('div.sc-jOHGOj.eIKsKB a[href="/configuration"]')
   await page.waitForTimeout(1000);
-  await page.waitForSelector('div.sc-jOHGOj.eIKsKB a[href="/configurar"]');
-  await page.click('div.sc-jOHGOj.eIKsKB a[href="/configurar"]');
+  await page.waitForSelector('div.sc-jOHGOj.eIKsKB a[href="/configuration"]');
+  await page.click('div.sc-jOHGOj.eIKsKB a[href="/configuration"]');
 
   await navigationPromise;
   await page.waitForTimeout(2000);
